@@ -1,0 +1,56 @@
+{
+  "name": "hslint",
+  "version": "0.0.0",
+  "description": "Lint HTML and template source files for hardcoded (untranslated) strings",
+  "homepage": "https://jwarby.github.io/hslint",
+  "private": true,
+  "preferGlobal": true,
+  "directories": {
+    "man": "doc/man"
+  },
+  "bin": {
+    "hslint": "./bin/hslint"
+  },
+  "main": "lib/hslint.js",
+  "scripts": {
+    "test": "mocha --recursive"
+  },
+  "author": {
+    "name": "James Warwood",
+    "email": "james.duncan.1991@googlemail.com",
+    "url": "https://github.com/jwarby"
+  },
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jwarby/hslint"
+  },
+  "license": "MIT",
+  "bugs": "https://github.com/jwarby/hslint/issues",
+  "dependencies": {
+    "chalk": "^1.0.0",
+    "commander": "^2.8.1",
+    "glob": "^5.0.5",
+    "htmlparser2": "^3.8.2",
+    "node.extend": "^1.1.3"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "hooker": "^0.2.3",
+    "mocha": "^2.2.4",
+    "strip-ansi": "^2.0.1"
+  },
+  "keywords": [
+    "hardcoded",
+    "strings",
+    "i18n",
+    "translation",
+    "hslint",
+    "lint",
+    "untranslated",
+    "detect"
+  ],
+  "engines": {
+    "node": ">=0.8.0"
+  }
+}
