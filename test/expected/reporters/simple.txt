@@ -1,0 +1,2 @@
+somefile.html: line 5, column 5, Hardcoded <p> tag
+somefile.html: line 7, column 19, Hardcoded 'alt' attribute

@@ -1,0 +1,4 @@
+
+  afile.html
+     5 |   <p>Something</p>
+              ^ Hardcoded <p> tag
