@@ -270,41 +270,6 @@ describe('hslint lib', function() {
     done();
   });
 
-  it('should handle cheerio edge cases', function(done) {
-    var errors = hslint('test/fixtures//cheerio_parse_missing.html'),
-      expected = [{
-        evidence: /(Font color)/
-      }, {
-        evidence: /(Background color)/
-      }, {
-        evidence: /(Toggle bold font)/
-      }, {
-        evidence: /(Toggle italicised font)/
-      }, {
-        evidence: /(Toggle underlined font)/
-      }].map(function(e, index) {
-        e.line = index + 1;
-
-        return e;
-      });
-
-    expect(errors).to.have.length(expected.length);
-
-    expected.forEach(function(e, index) {
-      Object.keys(e).forEach(function(key) {
-        if (key === 'evidence') {
-          expect(errors[index].error[key].toString())
-            .to.equal(expected[index][key].toString());
-        } else {
-          expect(errors[index].error)
-            .to.have.property(key).that.equals(expected[index][key]);
-        }
-      });
-    });
-
-    done();
-  });
-
   it('should handle invalid HTML', function(done) {
     var expected = [{
         line: 2,
@@ -412,6 +377,17 @@ describe('hslint lib', function() {
     expect(errors).not.to.throw(TypeError);
 
     expect(errors).to.have.length(1);
+
+    done();
+  });
+
+  it('should report correct character when offending text already appears in tag string', function(done) {
+    var errors = hslint('test/fixtures/repeated.html');
+
+    expect(errors[0].error)
+      .to.have.a.property('character')
+      .that.equals(140)
+    ;
 
     done();
   });
