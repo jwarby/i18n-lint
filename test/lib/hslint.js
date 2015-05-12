@@ -1,7 +1,7 @@
 /**
  * hslint lib tests
  *
- * Copyright (c) 2014 James Warwood
+ * Copyright (c) 2015 James Warwood
  * Licensed under the MIT license.
  */
 /* global describe, it */
