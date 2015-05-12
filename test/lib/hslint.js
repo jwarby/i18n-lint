@@ -308,10 +308,10 @@ describe('hslint lib', function() {
   it('should handle invalid HTML', function(done) {
     var expected = [{
         line: 2,
-        character: 182
+        character: 183
       }, {
         line: 3,
-        character: 169
+        character: 170
       }],
       errors = hslint('test/fixtures/invalid_html.html');
 
