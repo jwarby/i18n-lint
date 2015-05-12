@@ -49,5 +49,15 @@ describe('hslint utils', function() {
       expect(utils.escapeRegExp(input)).to.equal(expected);
     });
   });
+
+  describe('appendRegExp', function() {
+    it('should append the desired content to an existing RegExp', function() {
+      var expected = '/Something that will be finished/',
+        original = /Something that/,
+        after = ' will be finished';
+
+      expect(utils.appendRegExp(original, after).toString()).to.equal(expected);
+    });
+  });
 });
 
