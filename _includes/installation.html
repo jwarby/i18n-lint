@@ -1,0 +1,71 @@
+<section id="installation">
+  <div class="row text-center">
+    <h1>Installation</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h2>CLI</h2>
+      <div class="feature">
+        <p>Installing HSLint globally via npm gives you the <code>hslint</code> binary.</p>
+        {% highlight bash %}
+        $ npm install -g hslint
+        {% endhighlight %}
+        {% highlight bash %}
+        $ hslint --help
+
+Usage: hslint [OPTIONS] <file ...>
+
+Options:
+
+  -h, --help
+  -V, --version
+  -a, --attributes <attributes>
+  -i, --ignore-tags <tags>
+  -t, --template-delimiters <delimiters>
+  -r, --reporter <reporter>
+
+{% endhighlight %}
+      </div>
+    </div>
+    <!-- /.col-md-4 -->
+    <div class="col-md-4">
+      <h2>API</h2>
+      <div class="feature">
+        <p>HSLint can be used in other projects as a library.  After installing, simply require the module.</p>
+        {% highlight bash %}
+        $ npm install --save hslint
+        {% endhighlight %}
+        {% highlight javascript %}
+        var hslint = require('hslint');
+
+hslint('myfile.html', {
+// ... options ...
+});
+{% endhighlight %}
+      </div>
+    </div>
+    <!-- /.col-md-4 -->
+    <div class="col-md-4">
+      <h2>Grunt Plugin</h2>
+      <div class="feature">
+        <p>Integrate HSLint with <a href="http://gruntjs.com">grunt</a> and make it part of your build step using <a href="https://github.com/jwarby/grunt-hslint">grunt-hslint</a>.</p>
+        {% highlight bash %}
+        $ npm install --save-dev grunt-hslint
+        {% endhighlight %}
+        {% highlight javascript %}
+        // Gruntfile.js
+grunt.loadNpmTasks('grunt-hslint');
+
+grunt.initConfig({
+  // ... snip ...
+  hslint: {
+    // ... task config ...
+  }
+  // ... snip ...
+});
+{% endhighlight %}
+      </div>
+    </div>
+    <!-- /.col-md-4 -->
+  </div>
+</section>

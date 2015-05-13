@@ -1,0 +1,74 @@
+<section id="reporters">
+  <div class="row text-center">
+    <h1>Reporters</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <p>HSLint uses JavaScript functions to handle the output/processing of the errors collected
+      by HSLint.</p>
+
+      <p>For example, here's a basic reporter which reports a count of hardcoded
+      strings for each file which contained them:</p>
+      {% highlight javascript %}
+// ~/my_awesome_reporter.js
+module.exports = {
+  reporter: function(errors) {
+    var len = errors.length,
+      filename;
+
+    if (len) {
+      filename = errors[0].file;
+      process.stdout.write(filename + '\n -- ' + len + ' hardcoded string(s)\n');
+    }
+  }
+};
+      {% endhighlight %}
+
+      This would produce output similar to:
+      {% highlight bash %}
+$ hslint --reporter ~/my_awesome_reporter.js *.html
+index.html
+ -- 3 hardcoded string(s)
+partials/login.html
+ -- 1 hardcoded string(s)
+partials/profile.html
+ -- 4 hardcoded string(s)
+      {% endhighlight %}
+      </pre>
+
+      <h3>Built-in reporters</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Sample Output</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>default</td>
+            <td class="highlight">
+            <pre>
+ <span class="gs">test/fixtures/1.html</span>
+     2 |   &lt;h1&gt;<span class="err">Hardcoded h1</span>&lt;/h1&gt;
+               <span class="kn">^ Hardcoded &lt;h1&gt; tag</span>
+     3 |   &lt;a href="#" alt="<span class="err">hardcoded alt</span>"&gt;<%= translation %>&lt;/a&gt;
+                            <span class="kn">^ Hardcoded alt attribute</span>
+            </pre>
+            </td>
+          </tr>
+          <tr>
+            <td>simple</td>
+            <td class="highlight">
+            <pre>
+test/fixtures/1.html: line 2, column 6, Hardcoded &lt;h1&gt; tag
+test/fixtures/1.html: line 3, column 19, Hardcoded alt attribute
+            </pre>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

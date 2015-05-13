@@ -1,0 +1,48 @@
+<section id="usage">
+  <div class="row text-center">
+    <h1>Usage</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <h2>CLI</h2>
+
+      After installing, you should be able to type <code>hslint</code> into a terminal.
+
+      {% highlight bash %}
+# Display version and exit
+$ hslint --version
+
+# Lint myfile.html
+$ hslint myfile.html
+
+# Lint all HTML files using a glob pattern
+$ hslint views/**/*.html
+
+# Set options using --<option name> <optionValue>
+$ hslint --some-option "someValue" views/**/*.html
+      {% endhighlight %}
+    </div>
+
+    <div class="col-lg-6">
+      <h2>API</h2>
+
+      After installing, you can <code>require</code> the <code>hslint</code> lint module in your
+      code.
+
+      {% highlight javascript %}
+// Require the module
+var hslint = require('hslint');
+
+// Lint myfile.html
+var errors = hslint('myfile.html');
+
+// Lint all HTML files using a glob pattern
+var errors = hslint('views/**/*.html');
+
+// Set options using an object as the second parameter
+var errors = hslint('views/**/*.html', { /*some options*/ });
+      {% endhighlight %}
+    </div>
+  </div>
+</section>

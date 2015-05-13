@@ -1,0 +1,94 @@
+<section id="options">
+  <div class="row text-center">
+    <h1>Options</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <h2>CLI</h2>
+
+      <h4><code>-h, --help</code></h4>
+      <p>Display help text, then exit</p>
+
+      <h4><code>-V, --version</code></h4>
+      <p>Display version information, then exit</p>
+
+      <h4><code>-a, --attributes &lt;attributes&gt;</code></h4>
+      <p>Set which HTML attributes to check.  Defaults to <code>'alt,title'</code></p>
+
+      <h4><code>-i, --ignore-tags &lt;tags&gt;</code></h4>
+      <p>Set which HTML elements should be ignored when searching for hardcoded strings. Defaults to <code>'style,script'</code></p>
+
+      <h4><code>-t, --template-delimiters &lt;delimiters&gt;</code></h4>
+      <p>Define the template delimiters that the input files use.  For instance, templating languages with a Mustache-like
+      syntax should set this value to <code>'{{ "{{,"}}}}'</code>
+      </p>
+
+      <h4><code>-r, --reporter &lt;reporter&gt;</code></h4>
+      <p>Choose which report to output the results with.  Defaults to <code>'default'</code>.  JSHint reporters can also be used.</p>
+    </div>
+
+    <div class="col-lg-6">
+      <h2>API</h2>
+
+      <h4><code>attributes</code></h4>
+      <p>Set which HTML attributes to check.  Defaults to <code>['alt', 'title']</code></p>
+
+      <h4><code>ignoreTags</code></h4>
+      <p>Set which HTML elements should be ignored when searching for hardcoded strings. Defaults to <code>['style', 'script']</code></p>
+
+      <h4><code>templateDelimiters</code></h4>
+      <p>Define the template delimiters that the input files use.  For instance, templating languages with a Mustache-like
+      syntax should set this value to <code>['{{ "{{', '"}}}}']</code>
+      </p>
+
+      <h3>Returned Data</h3>
+      The <code>hslint</code> function returns an array containing objects which describe the error.  Each object looks like this:
+      {% highlight javascript %}
+{
+  file: String, // the file that was being linted when the error was found
+  error: {
+    id: String, // id of the error, ususally '(error)'
+    code: String, // the error code, e.g. 'W001', 'W002', etc
+    reason: String, // description of the problem
+    evidence: RegExp, // a regular expression, where error-causing parts of the string are captured in match groups
+    line: Number, // the line number of the error
+    character: Number, // the column number of the error
+    scope: String // where the error was found
+  }
+}
+      {% endhighlight %}
+      <h4>Error Codes</h4>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Code</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>W001</td>
+            <td>Element's text node content is a hardcoded string</td>
+          </tr>
+          <tr>
+            <td>W002</td>
+            <td>Element's attribute value is a hardcoded string</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Using Reporters</h3>
+      <p>Reporters can still be used when using HSLint as a library.  Built-in reporters are stored in <code>hslint.reporters</code>:</p>
+      {% highlight javascript %}
+var hslint = require('hslint');
+
+console.log(hslint.reporters);
+// {
+//   default: [Function]
+// }
+reporter(hslint('myfile.html'));
+      {% endhighlight %}
+    </div>
+  </div>
+</section>
