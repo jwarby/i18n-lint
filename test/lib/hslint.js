@@ -381,15 +381,18 @@ describe('hslint lib', function() {
     done();
   });
 
-  it('should report correct character when offending text already appears in tag string', function(done) {
-    var errors = hslint('test/fixtures/repeated.html');
+  it(
+    'should report correct character when offending text already appears in tag string',
+    function(done) {
+      var errors = hslint('test/fixtures/repeated.html');
 
-    expect(errors[0].error)
-      .to.have.a.property('character')
-      .that.equals(140)
-    ;
+      expect(errors[0].error)
+        .to.have.a.property('character')
+        .that.equals(140)
+      ;
 
-    done();
-  });
+      done();
+    }
+  );
 });
 

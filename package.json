@@ -13,7 +13,7 @@
   },
   "main": "lib/hslint.js",
   "scripts": {
-    "test": "mocha --recursive"
+    "test": "jshint bin/ lib/ test/ && mocha --recursive"
   },
   "author": {
     "name": "James Warwood",
@@ -38,6 +38,7 @@
   "devDependencies": {
     "chai": "^2.3.0",
     "hooker": "^0.2.3",
+    "jshint": "^2.7.0",
     "mocha": "^2.2.4",
     "strip-ansi": "^2.0.1"
   },

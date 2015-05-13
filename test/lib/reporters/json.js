@@ -5,6 +5,7 @@
  * Licensed under the MIT license.
  */
 /* global describe, it */
+/* jshint -W030 */
 'use strict';
 
 var expect = require('chai').expect;
