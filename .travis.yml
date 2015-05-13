@@ -1,0 +1,21 @@
+language: node_js
+
+node_js:
+  - '0.10'
+  - '0.11'
+
+before_install:
+  - npm update -g npm
+
+before_script:
+- npm install -g istanbul
+- npm install -g mocha
+- npm install -g codeclimate-test-reporter
+
+after_success:
+  - istanbul cover _mocha -- -R spec ./test/*.js
+  - codeclimate < ./coverage/lcov.info
+
+addons:
+  code_climate:
+    repo_token: 9517a300fa069be4f341027abd4b24f462ed7e172fff2f00c067980a466ee931
