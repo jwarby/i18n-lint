@@ -198,4 +198,17 @@ describe('hslint bin', function() {
       });
     });
   });
+
+  it('should warn and exit if file does not exist', function(done) {
+    var command = cmd + ' nonexistent.html';
+
+    exec(command, function(err, stdout, stderr) {
+      assert.notEqual(err, null);
+      assert.equal(err.code, 66);
+
+      assert.equal(stderr, 'hslint: nonexistent.html: No such file or directory\n');
+      done();
+    });
+  });
+
 });

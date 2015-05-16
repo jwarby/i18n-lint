@@ -134,6 +134,11 @@ program.args.forEach(function(src) {
       process.exit(70);
     }
 
+    if (!files.length) {
+      process.stderr.write('hslint: ' + src + ': No such file or directory\n');
+      process.exit(66);
+    }
+
     files.forEach(function(file) {
       var errors = hslint(file, options);
       reporter(errors);
