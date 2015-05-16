@@ -140,4 +140,17 @@ describe('hslint bin', function() {
       });
     });
   });
+
+  it('should support piping', function(done) {
+    var command = 'cat test/fixtures/testing.html | ' + cmd;
+
+    exec(command, function(err, stdout, stderr) {
+      console.log(arguments);
+      if (err) {
+        return done(err);
+      }
+
+      assert.equal(stdout.match(/Hardcoded/g).length, 10);
+    });
+  });
 });
