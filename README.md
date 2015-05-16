@@ -110,8 +110,6 @@ To write your own reporters, look to `lib/reporters/default.js` as a starting po
 
 A comma-separated list of file patterns to exclude, such as `'docs/,ignored.html'`.
 
-Maintain/turn off colored output.  For more info, see <https://www.npmjs.com/package/chalk#chalk-supportscolor>.
-
 ##### `--color/--no-color`
 
 Maintain/turn off colored output.  For more info, see <https://www.npmjs.com/package/chalk#chalk-supportscolor>.
@@ -148,6 +146,36 @@ var errors = hslint('some_file.ejs', {
   attributes: ['title', 'alt', 'data-custom-attr']
 });
 ```
+
+If you want to scan a string instead of reading in a file, you can use the `scan` function:
+
+```javascript
+var hslint = require('hslint');
+
+var context = '<h1>Some hardcoded string</h1>\n<br>\n<p>\ncontent not translated</p>';
+
+var options = {
+  // ...snip...
+};
+
+var errors = hslint.scan(context, options);
+```
+
+The scan function can also accept a `fileName` parameter:
+
+```javascript
+var hslint = require('hslint');
+
+var stdin = '';
+
+// Read stdin stream
+// ...snip...
+
+// Once stdin has finished...
+var errors = hslint(context, options, 'stdin');
+```
+
+This allows more meaningful output when the reporters print a filename.
 
 #### Options
 
