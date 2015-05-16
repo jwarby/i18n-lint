@@ -14,7 +14,6 @@ var path = require('path');
 var pkg = require('../../package.json');
 
 describe('hslint bin', function() {
-  this.timeout(3000);
   var cmd = 'node ' + path.join(__dirname, '../../bin/hslint') + ' ';
 
   it('--help should run without errors', function(done) {
