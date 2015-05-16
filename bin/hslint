@@ -12,15 +12,8 @@ var failed = false;
 var options = {};
 var pkg = require('../package.json');
 var reporter;
-
-// Helper functions
-var done = function() {
-  if (failed) {
-    process.exit(1);
-  } else {
-    process.exit(0);
-  }
-};
+var stdin = '';
+var stdinTimeout;
 
 program.on('--help', function() {
   process.stdout.write('  Use `man hslint` for more information\n\n');
@@ -65,12 +58,6 @@ program
   .parse(process.argv)
 ;
 
-if (program.args.length < 1 ) {
-	console.log('No files specified. See \'hslint --help\':');
-	program.outputHelp();
-	process.exit(64);
-}
-
 program.options.forEach(function(option) {
   var key = option.long.replace(/^--/, '')
       .replace(/-([a-z])/g, function(orig, match) {
@@ -99,7 +86,48 @@ if (options.reporter) {
 
 delete options.reporter;
 
+if (!program.args.length || program.args[0] === '-') {
+
+  process.stdin.setEncoding('utf8');
+
+  process.stdin.on('readable', function() {
+    clearTimeout(stdinTimeout);
+    var chunk = process.stdin.read();
+    if (chunk !== null) {
+      stdin += chunk;
+    }
+  });
+
+  process.stdin.on('end', function() {
+    if (!stdin) {
+      return;
+    }
+
+    var errors = hslint.scan(stdin, options, 'stdin');
+
+    reporter(errors);
+
+    if (errors.length) {
+      return process.exit(1);
+    }
+
+    process.exit(0);
+  });
+
+  if (!program.args.length) {
+    return (stdinTimeout = setTimeout(function() {
+      process.stdout.write('No files specified. See \'hslint --help\':\n');
+      program.outputHelp();
+      process.exit(64);
+    }, 10));
+  }
+}
+
 program.args.forEach(function(src) {
+  if (src === '-') {
+    return;
+  }
+
   glob(src, function(err, files) {
     if (err) {
       process.stderr.write(err);
@@ -118,7 +146,11 @@ program.args.forEach(function(src) {
     completed++;
 
     if (completed === program.args.length) {
-      done();
+      if (failed) {
+        return process.exit(1);
+      }
+
+      process.exit(0);
     }
   });
 });

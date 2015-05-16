@@ -14,6 +14,7 @@ var path = require('path');
 var pkg = require('../../package.json');
 
 describe('hslint bin', function() {
+  this.timeout(3000);
   var cmd = 'node ' + path.join(__dirname, '../../bin/hslint') + ' ';
 
   it('--help should run without errors', function(done) {
@@ -145,12 +146,56 @@ describe('hslint bin', function() {
     var command = 'cat test/fixtures/testing.html | ' + cmd;
 
     exec(command, function(err, stdout, stderr) {
-      console.log(arguments);
-      if (err) {
-        return done(err);
-      }
+      assert.equal(err.code, 1);
 
       assert.equal(stdout.match(/Hardcoded/g).length, 10);
+
+      command += ' --ignore-tags \'p\'';
+
+      exec(command, function(err, stdout, stderr) {
+        assert.equal(err.code, 1);
+
+        assert.equal(stdout.match(/Hardcoded/g).length, 8);
+        done();
+      });
+    });
+  });
+
+  it('should support piping using \'-\' argument', function(done) {
+    var command = 'cat test/fixtures/testing.html | ' + cmd + ' -';
+
+    exec(command, function(err, stdout, stderr) {
+      assert.equal(err.code, 1);
+
+      assert.equal(stdout.match(/Hardcoded/g).length, 10);
+
+      command += ' --ignore-tags \'p\'';
+
+      exec(command, function(err, stdout, stderr) {
+        assert.equal(err.code, 1);
+
+        assert.equal(stdout.match(/Hardcoded/g).length, 8);
+        done();
+      });
+    });
+  });
+
+  it('should support stdin redirection', function(done) {
+    var command = cmd + ' < test/fixtures/testing.html';
+
+    exec(command, function(err, stdout, stderr) {
+      assert.equal(err.code, 1);
+
+      assert.equal(stdout.match(/Hardcoded/g).length, 10);
+
+      command = cmd + ' --ignore-tags \'p\' < test/fixtures/testing.html';
+
+      exec(command, function(err, stdout, stderr) {
+        assert.equal(err.code, 1);
+
+        assert.equal(stdout.match(/Hardcoded/g).length, 8);
+        done();
+      });
     });
   });
 });
