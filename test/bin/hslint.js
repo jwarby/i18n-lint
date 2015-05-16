@@ -223,4 +223,14 @@ describe('hslint bin', function() {
       done();
     });
   });
+
+  it('should allow files to be ignored using --exclude', function(done) {
+    var command = cmd + ' test/**/*.html --exclude test_subdir/,1.html';
+
+    exec(command, function(err, stdout, stderr) {
+      assert.equal(stdout.indexOf('/test_subdir/'), -1);
+      assert.equal(stdout.indexOf('/1.html'), -1);
+      done();
+    });
+  });
 });
