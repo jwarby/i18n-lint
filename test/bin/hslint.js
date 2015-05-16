@@ -211,4 +211,17 @@ describe('hslint bin', function() {
     });
   });
 
+  it('should play nicely with xargs', function(done) {
+    var command = 'echo test/fixtures/testing.html test/fixtures/1.html | xargs ' + cmd;
+
+    exec(command, function(err, stdout, stderr) {
+
+      // xargs exit code if invocation fails
+      assert.equal(err.code, 123);
+
+      assert.equal(stdout.match(/\^ Hardcoded/g).length, 13);
+
+      done();
+    });
+  });
 });
