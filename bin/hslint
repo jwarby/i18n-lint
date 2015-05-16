@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 'use strict';
 
-// NPM dependencies
+// npm dependencies
 var glob = require('glob');
-var hslint = require('../lib/hslint');
 var program  = require('commander');
+
+// Project dependencies
+var hslint = require('../lib/hslint');
 
 // Local variables
 var completed = 0;
@@ -47,6 +49,14 @@ program
   .option(
     '-r, --reporter <reporter>',
     'Specify which reporter to output results with'
+  )
+  .option(
+    '--exclude <exclusion patterns>', 'Comma-separated list of glob patterns to ignore, '+
+      ' e.g. "/test_subdir/,ignored.html"',
+      function(raw) {
+        return raw.split(',');
+      },
+      []
   )
   .option(
     '--color', 'Force colored output'
@@ -128,7 +138,16 @@ program.args.forEach(function(src) {
     return;
   }
 
-  glob(src, function(err, files) {
+  if (options.exclude.some(function(pattern) {
+    return src.indexOf(pattern) !== -1;
+  })) {
+    return;
+  }
+
+  glob(src, {
+    ignore: options.exclude
+  }, function(err, files) {
+
     if (err) {
       process.stderr.write(err);
       process.exit(70);

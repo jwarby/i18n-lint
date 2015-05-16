@@ -106,6 +106,12 @@ There are two built-in reporters that get shipped with HSLint: `default` and `si
 
 To write your own reporters, look to `lib/reporters/default.js` as a starting point.
 
+##### `--exclude <patterns>`
+
+A comma-separated list of file patterns to exclude, such as `'docs/,ignored.html'`.
+
+Maintain/turn off colored output.  For more info, see <https://www.npmjs.com/package/chalk#chalk-supportscolor>.
+
 ##### `--color/--no-color`
 
 Maintain/turn off colored output.  For more info, see <https://www.npmjs.com/package/chalk#chalk-supportscolor>.
