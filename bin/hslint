@@ -98,6 +98,7 @@ delete options.reporter;
 
 if (!program.args.length || program.args[0] === '-') {
 
+  // @todo pass stream directly to hslint once streaming implemented
   process.stdin.setEncoding('utf8');
 
   process.stdin.on('readable', function() {
