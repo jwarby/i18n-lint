@@ -25,7 +25,6 @@ describe('hslint lib', function() {
 
   it('should return errors in the proper format', function(done) {
     var error = hslint('test/fixtures/testing.html').pop(),
-      details = error.error,
       expectedDetails = {
         id: 'string',
         code: 'string',
@@ -36,11 +35,8 @@ describe('hslint lib', function() {
         scope: 'string'
       };
 
-    expect(error).to.have.property('file');
-    expect(error).to.have.property('error');
-
     Object.keys(expectedDetails).forEach(function(property) {
-      expect(details)
+      expect(error)
         .to.have.property(property)
         .that.is.a(expectedDetails[property]);
     });
@@ -64,7 +60,7 @@ describe('hslint lib', function() {
 
     expect(
       errors.filter(function(error) {
-        return MESSAGES.text.test(error.error.reason);
+        return MESSAGES.text.test(error.reason);
       })
     ).to.have.length(9);
 
@@ -80,7 +76,7 @@ describe('hslint lib', function() {
 
     expect(
       errors.filter(function(error) {
-        return MESSAGES.attr.test(error.error.reason);
+        return MESSAGES.attr.test(error.reason);
       })
     ).to.be.empty;
 
@@ -92,7 +88,7 @@ describe('hslint lib', function() {
 
     expect(
       errors.map(function(error) {
-        return error.error.line;
+        return error.line;
       })
     ).to.have.members([6, 7, 8, 8, 8, 9, 9, 9, 12, 13]);
 
@@ -136,14 +132,14 @@ describe('hslint lib', function() {
     expect(errors).to.have.length(2);
 
     expect(errors[1])
-      .to.have.deep.property('error.reason')
+      .to.have.property('reason')
       .to.include('(continued)');
 
     // Second test case
     errors = hslint('test/fixtures/multiline_text_node_2.hbs');
     expect(errors).to.have.length(1);
     expect(errors[0])
-      .to.have.deep.property('error.line').that.equals(11);
+      .to.have.property('line').that.equals(11);
 
     done();
   });
@@ -155,7 +151,7 @@ describe('hslint lib', function() {
 
     expect(errors).to.have.length(1);
     expect(errors[0])
-      .to.have.deep.property('error.reason').to.match(MESSAGES.text);
+      .to.have.property('reason').to.match(MESSAGES.text);
 
     done();
   });
@@ -166,11 +162,11 @@ describe('hslint lib', function() {
     });
 
     expect(errors).to.have.length(1);
-    expect(errors[0]).to.have.deep.property('error.scope').to.contain(
+    expect(errors[0]).to.have.property('scope').to.contain(
       '<h5 alt="Showing <%= count %> of <%= total %> comments">'
     );
     expect(errors[0])
-      .to.have.deep.property('error.reason')
+      .to.have.property('reason')
         .that.equals('Hardcoded \'alt\' attribute');
 
     done();
@@ -193,7 +189,7 @@ describe('hslint lib', function() {
 
     expect(errors).to.have.length(1);
 
-    expect(errors[0]).to.have.deep.property('error.line').that.equals(2);
+    expect(errors[0]).to.have.property('line').that.equals(2);
 
     // Test with custom options
     errors = hslint('test/fixtures/ignore_tags_option.html', {
@@ -211,9 +207,9 @@ describe('hslint lib', function() {
 
     expect(
       errors.filter(function(error) {
-        return error.error.reason === 'Hardcoded <p> tag';
+        return error.reason === 'Hardcoded <p> tag';
       }).pop()
-    ).to.have.deep.property('error.scope').to.match(/©/);
+    ).to.have.property('scope').to.match(/©/);
 
     done();
   });
@@ -226,7 +222,7 @@ describe('hslint lib', function() {
     expect(errors).to.have.length(1);
 
     expect(errors[0])
-      .to.have.deep.property('error.evidence')
+      .to.have.property('evidence')
       .to.satisfy(function(regex) {
         return regex.toString().indexOf('should\\.\\.\\.') !== -1;
       });
@@ -262,7 +258,7 @@ describe('hslint lib', function() {
 
     expected.forEach(function(e, index) {
       Object.keys(e).forEach(function(key) {
-        expect(errors[index].error)
+        expect(errors[index])
           .to.have.property(key).that.equals(expected[index][key]);
       });
     });
@@ -284,7 +280,7 @@ describe('hslint lib', function() {
 
     expected.forEach(function(e, index) {
       Object.keys(e).forEach(function(key) {
-        expect(errors[index].error)
+        expect(errors[index])
           .to.have.property(key).that.equals(expected[index][key]);
       });
     });
@@ -312,7 +308,7 @@ describe('hslint lib', function() {
 
     expected.forEach(function(e, index) {
       Object.keys(e).forEach(function(key) {
-        expect(errors[index].error)
+        expect(errors[index])
           .to.have.property(key).that.equals(expected[index][key]);
       });
     });
@@ -349,7 +345,7 @@ describe('hslint lib', function() {
 
     expect(errors).to.have.length(1);
 
-    expect(errors.pop().error).to.have.a.property('line').that.is.a('number');
+    expect(errors.pop()).to.have.a.property('line').that.is.a('number');
 
     done();
   });
@@ -369,7 +365,7 @@ describe('hslint lib', function() {
     function(done) {
       var errors = hslint('test/fixtures/repeated.html');
 
-      expect(errors[0].error)
+      expect(errors[0])
         .to.have.a.property('character')
         .that.equals(140)
       ;
