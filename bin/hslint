@@ -114,7 +114,12 @@ if (!program.args.length || program.args[0] === '-') {
       return;
     }
 
-    var errors = hslint.scan(stdin, options, 'stdin');
+    var errors = hslint.scan(stdin, options).map(function(err) {
+      return {
+        file: 'stdin',
+        error: err
+      };
+    });
 
     reporter(errors);
 
@@ -160,7 +165,13 @@ program.args.forEach(function(src) {
     }
 
     files.forEach(function(file) {
-      var errors = hslint(file, options);
+      var errors = hslint(file, options).map(function(err) {
+        return {
+          file: file,
+          error: err
+        };
+      });
+
       reporter(errors);
 
       if (errors.length) {
