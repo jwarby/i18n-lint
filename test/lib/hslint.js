@@ -384,5 +384,17 @@ describe('hslint lib', function() {
 
     done();
   });
+
+  it('should strip Windows new line characters from end of scope', function(done) {
+    var errors = hslint('test/fixtures/windows_line_endings.html');
+
+    errors.forEach(function(error) {
+      expect(error.scope)
+        .not.to.have.string('\r')
+      ;
+    });
+
+    done();
+  });
 });
 
