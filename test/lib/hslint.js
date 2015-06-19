@@ -373,5 +373,16 @@ describe('hslint lib', function() {
       done();
     }
   );
+
+  it('should report content not in tags as hardcoded text nodes', function(done) {
+    var errors = hslint('test/fixtures/no_tag.html');
+
+    expect(errors[0])
+      .to.have.a.property('reason')
+      .that.equals('Hardcoded text node')
+    ;
+
+    done();
+  });
 });
 
