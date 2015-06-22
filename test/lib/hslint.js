@@ -437,5 +437,33 @@ describe('hslint lib', function() {
 
     done();
   });
+
+  it('should report split strings not in a tag as a single error', function(done) {
+    var errors = hslint('test/fixtures/no_tag_same_line.html');
+
+    expect(errors).to.have.length(1);
+
+    expect(errors[0].evidence.toString())
+      .to.equal('/(Favorite button).*?(by page\'s title\\.)/')
+    ;
+
+    errors = hslint('test/fixtures/no_tag_multi_line.html');
+
+    expect(errors).to.have.length(2);
+
+    expect(errors[0].evidence.toString())
+      .to.equal('/(Click here to)/')
+    ;
+
+    expect(errors[1].evidence.toString())
+      .to.equal('/(Favorite button).*?(by page\'s title\\.)/')
+    ;
+    expect(errors[1])
+      .to.have.a.property('reason')
+      .that.equals('Hardcoded text node (continued)')
+    ;
+
+    done();
+  });
 });
 
