@@ -140,4 +140,25 @@ describe('hslint reporters default', function() {
 
     done();
   });
+
+  it('should handle content which contains parentheses', function(done) {
+    var errors = require('../../fixtures/errors/parentheses_evidence.js')();
+    var actual = '';
+
+    hooker.hook(process.stdout, 'write', {
+      pre: function(out) {
+        actual += stripAnsi(out);
+
+        return hooker.preempt();
+      }
+    });
+
+    expect(reporter.bind(reporter, errors)).to.not.throw(SyntaxError);
+
+    hooker.unhook(process.stdout, 'write');
+
+    expect(actual).to.not.have.string('\\(');
+
+    done();
+  });
 });
