@@ -199,7 +199,7 @@ when linting EJS files:
 Specify which HTML attributes to check when searching for hardcoded strings.
 
 ##### `ignoreTags`
-###### type: `Array`, default: `['style', 'script']`
+###### type: `Array`, default: `['style', 'script', 'pre', 'code']`
 
 An array of tags which should be ignored when searching for hardcoded strings.
 

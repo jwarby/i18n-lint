@@ -297,10 +297,10 @@ describe('hslint lib', function() {
 
   });
 
-  it('should handle cases where a tags content does not start until the next line', function() {
+  it('should handle cases where a tag\'s content does not start until the next line', function() {
     var errors = hslint('test/fixtures/newline_tag.html');
 
-    expect(errors).to.have.length(2);
+    expect(errors).to.have.length(1);
 
   });
 
