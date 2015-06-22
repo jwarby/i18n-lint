@@ -341,11 +341,17 @@ describe('hslint lib', function() {
     function() {
       var errors = hslint('test/fixtures/repeated.html');
 
+      expect(errors).to.have.length(2);
+
       expect(errors[0])
         .to.have.a.property('character')
         .that.equals(140)
       ;
 
+      expect(errors[1])
+        .to.have.a.property('character')
+        .that.equals(97)
+      ;
     }
   );
 
