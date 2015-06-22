@@ -319,7 +319,7 @@ describe('hslint lib', function() {
   it('should handle cases where a tags content does not start until the next line', function(done) {
     var errors = hslint('test/fixtures/newline_tag.html');
 
-    expect(errors).to.have.length(1);
+    expect(errors).to.have.length(2);
 
     done();
   });
@@ -407,6 +407,14 @@ describe('hslint lib', function() {
     expect(errors[0].evidence.toString())
       .to.equal('/(Add favourite).*?(by page)/')
     ;
+    done();
+  });
+
+  it('should ignore HTML entities', function(done) {
+    var errors = hslint('test/fixtures/html_entities.html');
+
+    expect(errors).to.be.empty;
+
     done();
   });
 });
