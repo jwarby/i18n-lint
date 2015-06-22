@@ -396,5 +396,18 @@ describe('hslint lib', function() {
 
     done();
   });
+
+  it('should handle content separated by other content within parentheses', function(done) {
+    var errors = hslint('test/fixtures/parentheses.html');
+
+    expect(errors)
+      .to.have.length(3)
+    ;
+
+    expect(errors[0].evidence.toString())
+      .to.equal('/(Add favourite).*?(by page)/')
+    ;
+    done();
+  });
 });
 
