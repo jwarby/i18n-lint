@@ -417,5 +417,25 @@ describe('hslint lib', function() {
 
     done();
   });
+
+  it('should handle upper-cased tags and attributes', function(done) {
+    var errors = hslint('test/fixtures/uppercase_tags_attrs.html');
+
+    expect(errors)
+      .to.have.length(2)
+    ;
+
+    expect(errors[0])
+      .to.have.property('reason')
+      .that.equals('Hardcoded \'title\' attribute')
+    ;
+
+    expect(errors[1])
+      .to.have.property('reason')
+      .that.equals('Hardcoded <span> tag')
+    ;
+
+    done();
+  });
 });
 
