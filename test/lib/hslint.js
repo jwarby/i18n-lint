@@ -18,12 +18,11 @@ var MESSAGES = {
 };
 
 describe('hslint lib', function() {
-  it('should throw an error if no filename provided', function(done) {
+  it('should throw an error if no filename provided', function() {
     expect(hslint).to.throw(TypeError, /path must be/);
-    done();
   });
 
-  it('should return errors in the proper format', function(done) {
+  it('should return errors in the proper format', function() {
     var error = hslint('test/fixtures/testing.html').pop(),
       expectedDetails = {
         id: 'string',
@@ -41,19 +40,17 @@ describe('hslint lib', function() {
         .that.is.a(expectedDetails[property]);
     });
 
-    done();
   });
 
-  it('should produce accurate error report', function(done) {
+  it('should produce accurate error report', function() {
     var error = hslint('test/fixtures/testing.html').pop(),
       expected = require('../expected/error.js');
 
     expect(error).to.deep.equal(expected);
 
-    done();
   });
 
-  it('should produce correct output for default options', function(done) {
+  it('should produce correct output for default options', function() {
     var errors = hslint('test/fixtures/testing.html');
 
     expect(errors).to.have.length(10);
@@ -64,10 +61,9 @@ describe('hslint lib', function() {
       })
     ).to.have.length(9);
 
-    done();
   });
 
-  it('should produce correct output for custom options', function(done) {
+  it('should produce correct output for custom options', function() {
     var errors = hslint('test/fixtures/testing.html', {
       attributes: []
     });
@@ -80,10 +76,9 @@ describe('hslint lib', function() {
       })
     ).to.be.empty;
 
-    done();
   });
 
-  it('should report line numbers correctly', function(done) {
+  it('should report line numbers correctly', function() {
     var errors = hslint('test/fixtures/testing.html');
 
     expect(
@@ -92,10 +87,9 @@ describe('hslint lib', function() {
       })
     ).to.have.members([6, 7, 8, 8, 8, 9, 9, 9, 12, 13]);
 
-    done();
   });
 
-  it('should handle templated content correctly', function(done) {
+  it('should handle templated content correctly', function() {
 
     // Test with EJS-style delimiters, <% and %>
     expect(
@@ -111,20 +105,18 @@ describe('hslint lib', function() {
       })
     ).to.have.length(3);
 
-    done();
   });
 
-  it('should return empty array for clean file', function(done) {
+  it('should return empty array for clean file', function() {
     var errors = hslint('test/fixtures/clean.hbs', {
       templateDelimiters: ['{{', '}}']
     });
 
     expect(errors).to.be.empty;
 
-    done();
   });
 
-  it('should handle text nodes split over multiple lines', function(done) {
+  it('should handle text nodes split over multiple lines', function() {
     var errors = hslint('test/fixtures/multiline_text_node.hbs', {
       templateDelimiters: ['{{', '}}']
     });
@@ -141,10 +133,9 @@ describe('hslint lib', function() {
     expect(errors[0])
       .to.have.property('line').that.equals(11);
 
-    done();
   });
 
-  it ('should handle a text node with templated content', function(done) {
+  it ('should handle a text node with templated content', function() {
     var errors = hslint('test/fixtures/text_node_with_template_content.ejs', {
       templateDelimiters: ['<%', '%>']
     });
@@ -153,10 +144,9 @@ describe('hslint lib', function() {
     expect(errors[0])
       .to.have.property('reason').to.match(MESSAGES.text);
 
-    done();
   });
 
-  it('should handle attributes with templated content', function(done) {
+  it('should handle attributes with templated content', function() {
     var errors = hslint('test/fixtures/attribute_with_template_content.ejs', {
       templateDelimiters: ['<%', '%>']
     });
@@ -169,20 +159,18 @@ describe('hslint lib', function() {
       .to.have.property('reason')
         .that.equals('Hardcoded \'alt\' attribute');
 
-    done();
   });
 
-  it('should escape RegExp characters in source strings', function(done) {
+  it('should escape RegExp characters in source strings', function() {
     expect(
       function() {
         hslint('test/fixtures/regex_escaping.html');
       }
     ).not.to.throw(SyntaxError);
 
-    done();
   });
 
-  it('should ignore tags specified in `ignoreTags`', function(done) {
+  it('should ignore tags specified in `ignoreTags`', function() {
 
     // Test with default options
     var errors = hslint('test/fixtures/script_tag.html');
@@ -197,10 +185,9 @@ describe('hslint lib', function() {
     });
 
     expect(errors).to.have.length(0);
-    done();
   });
 
-  it('should handle unicode in input', function(done) {
+  it('should handle unicode in input', function() {
     var errors = hslint('test/fixtures/unicode.html');
 
     expect(errors).to.have.length(2);
@@ -211,10 +198,9 @@ describe('hslint lib', function() {
       }).pop()
     ).to.have.property('scope').to.match(/©/);
 
-    done();
   });
 
-  it('should catch hardcoded strings with ... ellipsis', function(done) {
+  it('should catch hardcoded strings with ... ellipsis', function() {
     var errors = hslint('test/fixtures/ellipsis_translation.ejs', {
       templateDelimiters: ['<%', '%>']
     });
@@ -227,18 +213,16 @@ describe('hslint lib', function() {
         return regex.toString().indexOf('should\\.\\.\\.') !== -1;
       });
 
-    done();
   });
 
-  it('should handle Windows line endings', function(done) {
+  it('should handle Windows line endings', function() {
     var errors = hslint('test/fixtures/windows_line_endings.html');
 
     expect(errors).to.have.length(3);
 
-    done();
   });
 
-  it('should get correct scope when offending text appears twice', function(done) {
+  it('should get correct scope when offending text appears twice', function() {
     var expected = [{
         line: 1,
         character: 24
@@ -263,10 +247,9 @@ describe('hslint lib', function() {
       });
     });
 
-    done();
   });
 
-  it('should handle invalid HTML', function(done) {
+  it('should handle invalid HTML', function() {
     var expected = [{
         line: 2,
         character: 183
@@ -285,10 +268,9 @@ describe('hslint lib', function() {
       });
     });
 
-    done();
   });
 
-  it('should handle multiple instances of exactly the same tag/contents', function(done) {
+  it('should handle multiple instances of exactly the same tag/contents', function() {
     var expected = [{
         line: 2,
         character: 6
@@ -313,56 +295,50 @@ describe('hslint lib', function() {
       });
     });
 
-    done();
   });
 
-  it('should handle cases where a tags content does not start until the next line', function(done) {
+  it('should handle cases where a tags content does not start until the next line', function() {
     var errors = hslint('test/fixtures/newline_tag.html');
 
     expect(errors).to.have.length(2);
 
-    done();
   });
 
-  it('should handle tags inside other tags', function(done) {
+  it('should handle tags inside other tags', function() {
     var errors = hslint('test/fixtures/tag_within_tag.html');
 
     expect(errors).to.have.length(1);
 
-    done();
   });
 
-  it('should handle attributes on new lines', function(done) {
+  it('should handle attributes on new lines', function() {
     var errors = hslint('test/fixtures/attribute_new_lines.html');
 
     expect(errors).to.have.length(2);
 
-    done();
   });
 
-  it('should handle content in brackets', function(done) {
+  it('should handle content in brackets', function() {
     var errors = hslint('test/fixtures/brackets.html');
 
     expect(errors).to.have.length(1);
 
     expect(errors.pop()).to.have.a.property('line').that.is.a('number');
 
-    done();
   });
 
-  it('should handle mixed quotes', function(done) {
+  it('should handle mixed quotes', function() {
     var errors = hslint.bind(hslint, 'test/fixtures/mixed_quotes.html');
 
     expect(errors).not.to.throw(TypeError);
 
     expect(errors).to.have.length(1);
 
-    done();
   });
 
   it(
     'should report correct character when offending text already appears in tag string',
-    function(done) {
+    function() {
       var errors = hslint('test/fixtures/repeated.html');
 
       expect(errors[0])
@@ -370,11 +346,10 @@ describe('hslint lib', function() {
         .that.equals(140)
       ;
 
-      done();
     }
   );
 
-  it('should report content not in tags as hardcoded text nodes', function(done) {
+  it('should report content not in tags as hardcoded text nodes', function() {
     var errors = hslint('test/fixtures/no_tag.html');
 
     expect(errors[0])
@@ -382,10 +357,9 @@ describe('hslint lib', function() {
       .that.equals('Hardcoded text node')
     ;
 
-    done();
   });
 
-  it('should strip Windows new line characters from end of scope', function(done) {
+  it('should strip Windows new line characters from end of scope', function() {
     var errors = hslint('test/fixtures/windows_line_endings.html');
 
     errors.forEach(function(error) {
@@ -394,10 +368,9 @@ describe('hslint lib', function() {
       ;
     });
 
-    done();
   });
 
-  it('should handle content separated by other content within parentheses', function(done) {
+  it('should handle content separated by other content within parentheses', function() {
     var errors = hslint('test/fixtures/parentheses.html');
 
     expect(errors)
@@ -407,18 +380,16 @@ describe('hslint lib', function() {
     expect(errors[0].evidence.toString())
       .to.equal('/(Add favourite).*?(by page)/')
     ;
-    done();
   });
 
-  it('should ignore HTML entities', function(done) {
+  it('should ignore HTML entities', function() {
     var errors = hslint('test/fixtures/html_entities.html');
 
     expect(errors).to.be.empty;
 
-    done();
   });
 
-  it('should handle upper-cased tags and attributes', function(done) {
+  it('should handle upper-cased tags and attributes', function() {
     var errors = hslint('test/fixtures/uppercase_tags_attrs.html');
 
     expect(errors)
@@ -435,10 +406,9 @@ describe('hslint lib', function() {
       .that.equals('Hardcoded <span> tag')
     ;
 
-    done();
   });
 
-  it('should report split strings not in a tag as a single error', function(done) {
+  it('should report split strings not in a tag as a single error', function() {
     var errors = hslint('test/fixtures/no_tag_same_line.html');
 
     expect(errors).to.have.length(1);
@@ -458,12 +428,22 @@ describe('hslint lib', function() {
     expect(errors[1].evidence.toString())
       .to.equal('/(Favorite button).*?(by page\'s title\\.)/')
     ;
+
     expect(errors[1])
       .to.have.a.property('reason')
       .that.equals('Hardcoded text node (continued)')
     ;
+  });
 
-    done();
+  it('should handle attributes which are split across multiple lines', function() {
+    var errors = hslint('test/fixtures/multiline_attribute.html');
+
+    expect(errors).to.have.length(2);
+
+    expect(errors[0])
+      .to.have.a.property('reason')
+      .that.equals('Hardcoded \'title\' attribute')
+    ;
   });
 });
 
