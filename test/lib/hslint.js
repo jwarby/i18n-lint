@@ -451,5 +451,11 @@ describe('hslint lib', function() {
       .that.equals('Hardcoded \'title\' attribute')
     ;
   });
+
+  it('reports when error on last line and no newline at EOF', function() {
+    var errors = hslint('test/fixtures/last_line_error_no_newline_at_eof.html');
+
+    expect(errors).to.have.length(1);
+  });
 });
 
