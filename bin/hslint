@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 
+// Core dependencies
+var path = require('path');
+
 // npm dependencies
 var glob = require('glob');
 var program  = require('commander');
@@ -84,7 +87,7 @@ if (options.reporter) {
 
   if (!reporter) {
     try {
-      reporter = require(options.reporter).reporter;
+      reporter = require(path.resolve(options.reporter));
     } catch(e) {
       process.stderr.write('No reporter called \'' + options.reporter + '\'\n');
       process.exit(66);
@@ -114,7 +117,12 @@ if (!program.args.length || program.args[0] === '-') {
       return;
     }
 
-    var errors = hslint.scan(stdin, options, 'stdin');
+    var errors = hslint.scan(stdin, options).map(function(err) {
+      return {
+        file: 'stdin',
+        error: err
+      };
+    });
 
     reporter(errors);
 
@@ -160,7 +168,13 @@ program.args.forEach(function(src) {
     }
 
     files.forEach(function(file) {
-      var errors = hslint(file, options);
+      var errors = hslint(file, options).map(function(err) {
+        return {
+          file: file,
+          error: err
+        };
+      });
+
       reporter(errors);
 
       if (errors.length) {

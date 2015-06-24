@@ -15,7 +15,7 @@ var fs = require('fs');
 var hooker = require('hooker');
 var stripAnsi = require('strip-ansi');
 
-var reporter = require('../../../lib/reporters/default.js').reporter;
+var reporter = require('../../../lib/reporters/default.js');
 
 describe('hslint reporters default', function() {
   it('should format the output correctly', function(done) {
@@ -137,6 +137,27 @@ describe('hslint reporters default', function() {
     hooker.unhook(process.stdout, 'write');
 
     expect(actual).to.equal(expected.toString());
+
+    done();
+  });
+
+  it('should handle content which contains parentheses', function(done) {
+    var errors = require('../../fixtures/errors/parentheses_evidence.js')();
+    var actual = '';
+
+    hooker.hook(process.stdout, 'write', {
+      pre: function(out) {
+        actual += stripAnsi(out);
+
+        return hooker.preempt();
+      }
+    });
+
+    expect(reporter.bind(reporter, errors)).to.not.throw(SyntaxError);
+
+    hooker.unhook(process.stdout, 'write');
+
+    expect(actual).to.not.have.string('\\(');
 
     done();
   });
