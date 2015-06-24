@@ -3,8 +3,7 @@
 [![Build Status](https://secure.travis-ci.org/jwarby/hslint.png?branch=master)](https://travis-ci.org/jwarby/hslint)
 [![Dependency Status](https://david-dm.org/jwarby/hslint.svg?style=flat)](https://david-dm.org/jwarby/hslint)
 [![devDependency Status](https://david-dm.org/jwarby/hslint/dev-status.svg?style=flat)](https://david-dm.org/jwarby/hslint#info=devDependencies)
-[![Code Climate](https://codeclimate.com/repos/5552ffb3e30ba05e900189ff/badges/cfdc4caea41288f2c610/gpa.svg)](https://codeclimate.com/repos/5552ffb3e30ba05e900189ff/feed)
-[![Test Coverage](https://codeclimate.com/repos/5552ffb3e30ba05e900189ff/badges/cfdc4caea41288f2c610/coverage.svg)](https://codeclimate.com/repos/5552ffb3e30ba05e900189ff/coverage)
+[![Coverage Status](https://coveralls.io/repos/jwarby/hslint/badge.svg?branch=dev)](https://coveralls.io/r/jwarby/hslint?branch=dev)
 
 `hslint` is a tool for detecting hardcoded (untranslated) strings in HTML and template source files.  It can be used a CLI utility, or as library.
 `hslint` detects instances where a HTML element's text node or certain attributes look like a hardcoded string.
