@@ -428,7 +428,7 @@ describe('hslint lib', function() {
     expect(errors).to.have.length(2);
 
     expect(errors[0].evidence.toString())
-      .to.equal('/(Click here to)/')
+      .to.equal('/(Click on the)/')
     ;
 
     expect(errors[1].evidence.toString())
