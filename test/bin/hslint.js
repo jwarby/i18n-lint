@@ -244,4 +244,18 @@ describe('hslint bin', function() {
       done();
     });
   });
+
+  it('should output appropriate warning if a directory is specified as input', function(done) {
+    var command = cmd + ' test/';
+
+    exec(command, function(err, stdout, stderr) {
+
+      assert.notEqual(err, null);
+      assert.equal(err.code, 64);
+
+      assert.equal(stderr, 'hslint: test/: is a directory\n');
+
+      done();
+    });
+  });
 });
