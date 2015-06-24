@@ -102,9 +102,9 @@ The reporter to use when outputting information.  The reporters follow the same 
 JSHint reporters, and the `hslint` library reports error in the same manner as JSHint - this
 means you can use any existing JSHint reporters as reporters for `hslint`!
 
-There are two built-in reporters that get shipped with HSLint: `default` and `simple`
+There are 3 built-in reporters that get shipped with HSLint: `default`, `unix` and `json`
 
-To write your own reporters, look to `lib/reporters/default.js` as a starting point.
+To write your own reporters, look to `lib/reporters/*.js` as a starting point.
 
 ##### `--exclude <patterns>`
 
@@ -220,7 +220,7 @@ var errors = hslint('file.html', {});
 reporter(errors);
 ```
 
-There are currently two built-in reporters: `default` and `simple`.
+There are currently 3 built-in reporters: `default`, `unix` and `json`.
 
 To use other reporters, simply require them:
 

@@ -1,0 +1,2 @@
+somefile.html:5:5 Hardcoded <p> tag
+somefile.html:7:19 Hardcoded 'alt' attribute

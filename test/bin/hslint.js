@@ -80,8 +80,8 @@ describe('hslint bin', function() {
   });
 
   it('should allow a built-in reporter to be specified', function(done) {
-    exec(cmd + ' --reporter simple test/fixtures/1.html', function(error, stdout, stderr) {
-      assert.equal(stderr.indexOf('No reporter called \'simple\''), -1);
+    exec(cmd + ' --reporter unix test/fixtures/1.html', function(error, stdout, stderr) {
+      assert.equal(stderr.indexOf('No reporter called \'unix\''), -1);
 
       done();
     });
