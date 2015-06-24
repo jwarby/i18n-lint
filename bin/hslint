@@ -168,17 +168,29 @@ program.args.forEach(function(src) {
     }
 
     files.forEach(function(file) {
-      var errors = hslint(file, options).map(function(err) {
-        return {
-          file: file,
-          error: err
-        };
-      });
+      try {
+        var errors = hslint(file, options).map(function(err) {
+          return {
+            file: file,
+            error: err
+          };
+        });
 
-      reporter(errors);
+        reporter(errors);
 
-      if (errors.length) {
+        if (errors.length) {
+          failed = true;
+        }
+      } catch(e) {
         failed = true;
+
+        if (e.code === 'EISDIR') {
+          process.stderr.write('hslint: ' + file + ': is a directory\n');
+          process.exit(64);
+        } else {
+          process.stderr.write(e);
+          process.exit(70);
+        }
       }
     });
 
