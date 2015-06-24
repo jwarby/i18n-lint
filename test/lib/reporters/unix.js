@@ -18,7 +18,7 @@ var hooker = require('hooker');
 
 // Local imports
 var errors = require('../../fixtures/errors/1.js')();
-var reporter = require('../../../lib/reporters/unix.js').reporter;
+var reporter = require('../../../lib/reporters/unix.js');
 
 describe('hslint reporters unix', function() {
   it('should format the output correctly', function() {

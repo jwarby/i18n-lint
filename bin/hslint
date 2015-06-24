@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 'use strict';
 
+// Core dependencies
+var path = require('path');
+
 // npm dependencies
 var glob = require('glob');
 var program  = require('commander');
@@ -84,7 +87,7 @@ if (options.reporter) {
 
   if (!reporter) {
     try {
-      reporter = require(options.reporter).reporter;
+      reporter = require(path.resolve(options.reporter));
     } catch(e) {
       process.stderr.write('No reporter called \'' + options.reporter + '\'\n');
       process.exit(66);

@@ -87,6 +87,17 @@ describe('hslint bin', function() {
     });
   });
 
+  it('should allow a custom reporter to be used', function(done) {
+    exec(
+      cmd + ' --reporter test/fixtures/sample-reporter.js test/fixtures/1.html',
+      function(err, stdout, stderr) {
+        assert.equal(stdout, 'Found 3 errors\n');
+
+        done();
+      }
+    );
+  });
+
   it('-i, --ignore-tags option should work as expected', function(done) {
     var args = [
       ' -i "h1,a" test/fixtures/testing.html',

@@ -13,7 +13,7 @@ var fs = require('fs');
 var hooker = require('hooker');
 var stripAnsi = require('strip-ansi');
 
-var reporter = require('../../../lib/reporters/json.js').reporter;
+var reporter = require('../../../lib/reporters/json.js');
 
 var errors = require('../../fixtures/errors/1.js')();
 

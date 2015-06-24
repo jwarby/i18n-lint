@@ -15,7 +15,7 @@ var fs = require('fs');
 var hooker = require('hooker');
 var stripAnsi = require('strip-ansi');
 
-var reporter = require('../../../lib/reporters/default.js').reporter;
+var reporter = require('../../../lib/reporters/default.js');
 
 describe('hslint reporters default', function() {
   it('should format the output correctly', function(done) {
