@@ -20,7 +20,7 @@ See <https://jwarby.github.io/i18n-lint/> for the full documentation and demos.
 Install using npm:
 
 ```shell
-  $ npm install -g i18n-lint
+  $ npm install -g jwarby/i18n-lint
 ```
 
 Installing globally will give you access to the `i18n-lint` binary from anywhere.
