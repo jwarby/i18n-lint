@@ -188,7 +188,7 @@ Specify the start and end template delimiters which the source files use.  For e
 when linting EJS files:
 
 ```javascript
-  i18n-lint('file.ejs', {
+  I18nLint('file.ejs', {
     templateDelimiters: ['<%', '%>']
   });
 ```
@@ -205,17 +205,16 @@ An array of tags which should be ignored when searching for hardcoded strings.
 
 #### Using Reporters
 
-When using `i18n-lint` as a library, you can still use the reporters.  Built-in reporters are
-available as `reporters` on the `i18n-lint` function:
+When using `i18n-lint` as a library, you can still use the reporters:
 
 ```javascript
-console.log(i18n-lint.reporters);
+console.log(I18nLint.reporters);
 // {
 //  default: [Function]
 // }
 
-var reporter = i18n-lint.reporters.default;
-var errors = i18n-lint('file.html', {});
+var reporter = I18nLint.reporters.default;
+var errors = I18nLint('file.html', {});
 
 reporter(errors);
 ```
@@ -225,10 +224,10 @@ There are currently 3 built-in reporters: `default`, `unix` and `json`.
 To use other reporters, simply require them:
 
 ```javascript
-var i18n-lint = require('i18n-lint');
+var I18nLint = require('i18n-lint');
 var reporter = require('i18n-lint-awesome-reporter');
 
-reporter(i18n-lint('file.html', {}));
+reporter(I18nLint('file.html', {}));
 ```
 
 #### Error Format
