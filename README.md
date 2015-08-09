@@ -268,6 +268,11 @@ See [CONTRIBUTING.md](https://github.com/jwarby/i18n-lint/blob/master/CONTRIBUTI
   - lints JS files in `bin/`, `lib/` and `test/`
   - runs [`mocha`](http://mochajs.org) test suite
 
+#### Generate Code Coverage Report
+
+- `npm run-script coverage`
+  - coverage is output to a `./coverage` directory
+
 ## Release History
 
 `i18n-lint` follows [SemVer](http://semver.org/spec/v2.0.0.html) rules for version numbers.
