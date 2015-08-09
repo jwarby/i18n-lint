@@ -1,16 +1,17 @@
-# hslint [![GitHub version](https://badge.fury.io/gh/jwarby%2Fhslint.svg)](http://semver.org/spec/v2.0.0.html)
+# i18n-lint [![GitHub version](https://badge.fury.io/gh/jwarby%2Fi18n-lint.svg)](http://semver.org/spec/v2.0.0.html)
+> Detect possible instances of untranslated strings being used in HTML and HTML-derived template languages
 
-[![Build Status](https://secure.travis-ci.org/jwarby/hslint.png?branch=master)](https://travis-ci.org/jwarby/hslint)
-[![Dependency Status](https://david-dm.org/jwarby/hslint.svg?style=flat)](https://david-dm.org/jwarby/hslint)
-[![devDependency Status](https://david-dm.org/jwarby/hslint/dev-status.svg?style=flat)](https://david-dm.org/jwarby/hslint#info=devDependencies)
-[![Coverage Status](https://coveralls.io/repos/jwarby/hslint/badge.svg?branch=dev)](https://coveralls.io/r/jwarby/hslint?branch=dev)
+[![Build Status](https://secure.travis-ci.org/jwarby/i18n-lint.png?branch=master)](https://travis-ci.org/jwarby/i18n-lint)
+[![Dependency Status](https://david-dm.org/jwarby/i18n-lint.svg?style=flat)](https://david-dm.org/jwarby/i18n-lint)
+[![devDependency Status](https://david-dm.org/jwarby/i18n-lint/dev-status.svg?style=flat)](https://david-dm.org/jwarby/i18n-lint#info=devDependencies)
+[![Coverage Status](https://coveralls.io/repos/jwarby/i18n-lint/badge.svg?branch=dev)](https://coveralls.io/r/jwarby/i18n-lint?branch=dev)
 
-`hslint` is a tool for detecting hardcoded (untranslated) strings in HTML and template source files.  It can be used a CLI utility, or as library.
-`hslint` detects instances where a HTML element's text node or certain attributes look like a hardcoded string.
+`i18n-lint` is a tool for detecting hardcoded (untranslated) strings in HTML and template source files.  It can be used a CLI utility, or as library.
+`i18n-lint` detects instances where a HTML element's text node or certain attributes look like a hardcoded string.
 
-See <https://jwarby.github.io/hslint/> for the full documentation and demos.
+See <https://jwarby.github.io/i18n-lint/> for the full documentation and demos.
 
-![hslint screenshot](screenshot.png)
+![i18n-lint screenshot](screenshot.png)
 
 ## Getting started
 
@@ -19,43 +20,43 @@ See <https://jwarby.github.io/hslint/> for the full documentation and demos.
 Install using npm:
 
 ```shell
-  $ npm install -g hslint
+  $ npm install -g i18n-lint
 ```
 
-Installing globally will give you access to the `hslint` binary from anywhere.
+Installing globally will give you access to the `i18n-lint` binary from anywhere.
 
 ## Documentation
 
-See <https://jwarby.github.io/hslint/> for the full documentation.
+See <https://jwarby.github.io/i18n-lint/> for the full documentation.
 
 ### CLI
 
-The CLI program is called `hslint`, and will be available once `hslint` has been installed globally.
+The CLI program is called `i18n-lint`, and will be available once `i18n-lint` has been installed globally.
 
 Usage:
 
 ```shell
-  $ hslint [OPTIONS] <file ...>
+  $ i18n-lint [OPTIONS] <file ...>
 ```
 
 #### Program help and information
 
-- Run `hslint --help` or `hslint -h` to display help output and then exit
-- Run `hslint --version` or `hslint -V` to display version and then exit
-- Run `man hslint` on systems which support `man` to view the Linux manual page
+- Run `i18n-lint --help` or `i18n-lint -h` to display help output and then exit
+- Run `i18n-lint --version` or `i18n-lint -V` to display version and then exit
+- Run `man i18n-lint` on systems which support `man` to view the Linux manual page
 
 #### Linting files
 
-To lint a file, call `hslint <file>`:
+To lint a file, call `i18n-lint <file>`:
 
 ```shell
-  $ hslint some_file.html
+  $ i18n-lint some_file.html
 ```
 
 You can use a glob pattern too:
 
 ```shell
-  $ hslint app/views/**/*.html
+  $ i18n-lint app/views/**/*.html
 ```
 
 #### Options
@@ -72,16 +73,16 @@ Display version information and then exit
 
 Set the template delimiters which the source files use.  The value should be the start and
 end delimiters, separated by a comma.  For example, if running
-`hslint` against template files which use a Mustache-like syntax, use the following:
+`i18n-lint` against template files which use a Mustache-like syntax, use the following:
 
 ```shell
-  $ hslint -t "{{,}}" views/**/*.hbs
+  $ i18n-lint -t "{{,}}" views/**/*.hbs
 ```
 
 Similarly, but for EJS-syntax:
 
 ```shell
-  $ hslint -t "<%,%>" views/**/*.ejs
+  $ i18n-lint -t "<%,%>" views/**/*.ejs
 ```
 
 ##### `-a, --attributes <attributes>`
@@ -98,10 +99,10 @@ A comma-separated list of HTML tags to ignore when searching for hardcoded strin
 ###### default: `default`
 
 The reporter to use when outputting information.  The reporters follow the same structure as
-JSHint reporters, and the `hslint` library reports error in the same manner as JSHint - this
-means you can use any existing JSHint reporters as reporters for `hslint`!
+JSHint reporters, and the `i18n-lint` library reports error in the same manner as JSHint - this
+means you can use any existing JSHint reporters as reporters for `i18n-lint`!
 
-There are 3 built-in reporters that get shipped with HSLint: `default`, `unix` and `json`
+There are 3 built-in reporters that get shipped with `i18n-lint`: `default`, `unix` and `json`.
 
 To write your own reporters, look to `lib/reporters/*.js` as a starting point.
 
@@ -123,24 +124,24 @@ Maintain/turn off colored output.  For more info, see <https://www.npmjs.com/pac
 
 #### Colored Output
 
-To maintain colored output, run `hslint` with the `--color` flag:
+To maintain colored output, run `i18n-lint` with the `--color` flag:
 
 ```shell
-  $ hslint --color **/*.html | less -R
+  $ i18n-lint --color **/*.html | less -R
 ```
 
 ### Library
 
-To use `hslint` as a library, install it locally and `require` it in your projects:
+To use `i18n-lint` as a library, install it locally and `require` it in your projects:
 
 ```shell
-  $ npm install --save-dev hslint
+  $ npm install --save-dev i18n-lint
 ```
 
 ```javascript
-var hslint = require('hslint');
+var i18nLint = require('i18n-lint');
 
-var errors = hslint('some_file.ejs', {
+var errors = i18nLint('some_file.ejs', {
   templateDelimiters: ['<%','%>'],
   attributes: ['title', 'alt', 'data-custom-attr']
 });
@@ -149,7 +150,7 @@ var errors = hslint('some_file.ejs', {
 If you want to scan a string instead of reading in a file, you can use the `scan` function:
 
 ```javascript
-var hslint = require('hslint');
+var i18n-lint = require('i18n-lint');
 
 var context = '<h1>Some hardcoded string</h1>\n<br>\n<p>\ncontent not translated</p>';
 
@@ -157,13 +158,13 @@ var options = {
   // ...snip...
 };
 
-var errors = hslint.scan(context, options);
+var errors = i18n-lint.scan(context, options);
 ```
 
 The scan function can also accept a `fileName` parameter:
 
 ```javascript
-var hslint = require('hslint');
+var i18n-lint = require('i18n-lint');
 
 var stdin = '';
 
@@ -171,14 +172,14 @@ var stdin = '';
 // ...snip...
 
 // Once stdin has finished...
-var errors = hslint(context, options, 'stdin');
+var errors = i18n-lint(context, options, 'stdin');
 ```
 
 This allows more meaningful output when the reporters print a filename.
 
 #### Options
 
-Options are passed as an object, as the second parameter to `hslint`.
+Options are passed as an object, as the second parameter to `i18n-lint`.
 
 ##### `templateDelimiters`
 ###### type: `Array`, default: `[]`
@@ -187,7 +188,7 @@ Specify the start and end template delimiters which the source files use.  For e
 when linting EJS files:
 
 ```javascript
-  hslint('file.ejs', {
+  i18n-lint('file.ejs', {
     templateDelimiters: ['<%', '%>']
   });
 ```
@@ -204,17 +205,17 @@ An array of tags which should be ignored when searching for hardcoded strings.
 
 #### Using Reporters
 
-When using `hslint` as a library, you can still use the reporters.  Built-in reporters are
-available as `reporters` on the `hslint` function:
+When using `i18n-lint` as a library, you can still use the reporters.  Built-in reporters are
+available as `reporters` on the `i18n-lint` function:
 
 ```javascript
-console.log(hslint.reporters);
+console.log(i18n-lint.reporters);
 // {
 //  default: [Function]
 // }
 
-var reporter = hslint.reporters.default;
-var errors = hslint('file.html', {});
+var reporter = i18n-lint.reporters.default;
+var errors = i18n-lint('file.html', {});
 
 reporter(errors);
 ```
@@ -224,10 +225,10 @@ There are currently 3 built-in reporters: `default`, `unix` and `json`.
 To use other reporters, simply require them:
 
 ```javascript
-var hslint = require('hslint');
-var reporter = require('hslint-awesome-reporter');
+var i18n-lint = require('i18n-lint');
+var reporter = require('i18n-lint-awesome-reporter');
 
-reporter(hslint('file.html', {}));
+reporter(i18n-lint('file.html', {}));
 ```
 
 #### Error Format
@@ -249,8 +250,8 @@ reporter(hslint('file.html', {}));
 
 ### Grunt
 
-There is a grunt task which wraps `hslint`'s functionality, which
-can be found at <https://github.com/jwarby/grunt-hslint>.
+There is a grunt task which wraps `i18n-lint`'s functionality, which
+can be found at <https://github.com/jwarby/grunt-i18n-lint>.
 
 ## Warning Numbers
 
@@ -259,7 +260,7 @@ can be found at <https://github.com/jwarby/grunt-hslint>.
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/jwarby/hslint/blob/master/CONTRIBUTING.md).
+See [CONTRIBUTING.md](https://github.com/jwarby/i18n-lint/blob/master/CONTRIBUTING.md).
 
 ### Running Tests
 
@@ -269,7 +270,7 @@ See [CONTRIBUTING.md](https://github.com/jwarby/hslint/blob/master/CONTRIBUTING.
 
 ## Release History
 
-HSLint follows [SemVer](http://semver.org/spec/v2.0.0.html) rules for version numbers.
+`i18n-lint` follows [SemVer](http://semver.org/spec/v2.0.0.html) rules for version numbers.
 
 ~~No releases yet~~
 
@@ -279,7 +280,7 @@ Copyright (c) 2015 James Warwood.  Licensed under the MIT license.
 
 ## Authors
 
-See [AUTHORS.txt](https://github.com/jwarby/hslint/blob/master/AUTHORS.txt).
+See [AUTHORS.txt](https://github.com/jwarby/i18n-lint/blob/master/AUTHORS.txt).
 ## Acknowledgements
 
 - CLI app scaffolding from <https://github.com/Hypercubed/generator-commander>

@@ -9,7 +9,7 @@ var glob = require('glob');
 var program  = require('commander');
 
 // Project dependencies
-var hslint = require('../lib/hslint');
+var I18nLint = require('../');
 
 // Local variables
 var completed = 0;
@@ -21,7 +21,7 @@ var stdin = '';
 var stdinTimeout;
 
 program.on('--help', function() {
-  process.stdout.write('  Use `man hslint` for more information\n\n');
+  process.stdout.write('  Use `man i18n-lint` for more information\n\n');
 });
 
 program
@@ -82,8 +82,8 @@ program.options.forEach(function(option) {
 
 if (options.reporter) {
 
-  // Check built-in hslint reporters first
-  reporter = hslint.reporters[options.reporter];
+  // Check built-in i18n-lint reporters first
+  reporter = I18nLint.reporters[options.reporter];
 
   if (!reporter) {
     try {
@@ -94,14 +94,14 @@ if (options.reporter) {
     }
   }
 } else {
-  reporter = hslint.reporters.default;
+  reporter = I18nLint.reporters.default;
 }
 
 delete options.reporter;
 
 if (!program.args.length || program.args[0] === '-') {
 
-  // @todo pass stream directly to hslint once streaming implemented
+  // @todo pass stream directly to i18n-lint once streaming implemented
   process.stdin.setEncoding('utf8');
 
   process.stdin.on('readable', function() {
@@ -117,7 +117,7 @@ if (!program.args.length || program.args[0] === '-') {
       return;
     }
 
-    var errors = hslint.scan(stdin, options).map(function(err) {
+    var errors = I18nLint.scan(stdin, options).map(function(err) {
       return {
         file: 'stdin',
         error: err
@@ -135,7 +135,7 @@ if (!program.args.length || program.args[0] === '-') {
 
   if (!program.args.length) {
     return (stdinTimeout = setTimeout(function() {
-      process.stdout.write('No files specified. See \'hslint --help\':\n');
+      process.stdout.write('No files specified. See \'i18n-lint --help\':\n');
       program.outputHelp();
       process.exit(64);
     }, 10));
@@ -163,13 +163,13 @@ program.args.forEach(function(src) {
     }
 
     if (!files.length) {
-      process.stderr.write('hslint: ' + src + ': No such file or directory\n');
+      process.stderr.write('i18n-lint: ' + src + ': No such file or directory\n');
       process.exit(66);
     }
 
     files.forEach(function(file) {
       try {
-        var errors = hslint(file, options).map(function(err) {
+        var errors = I18nLint(file, options).map(function(err) {
           return {
             file: file,
             error: err
@@ -185,7 +185,7 @@ program.args.forEach(function(src) {
         failed = true;
 
         if (e.code === 'EISDIR') {
-          process.stderr.write('hslint: ' + file + ': is a directory\n');
+          process.stderr.write('i18n-lint: ' + file + ': is a directory\n');
           process.exit(64);
         } else {
           process.stderr.write(e);

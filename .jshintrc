@@ -1,6 +1,6 @@
 {
   /* jwarby's JavaScript Style Guide
-   * v1.1.0
+   * v1.2.0
    *
    * https://gist.github.com/75aeeab0793a60d14303
    * =====================================================
@@ -43,8 +43,8 @@
   // Enforce line length to 100 characters
   "maxlen": 100,
 
-  // Require capitalized names for constructor functions.
-  "newcap": true,
+  // Don't require capitalized names for constructor functions.
+  "newcap": false,
 
   // Enforce use of single quotation marks for strings.
   "quotmark": "single",

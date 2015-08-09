@@ -1,5 +1,5 @@
 /**
- * hslint utils tests
+ * i18n-lint utils tests
  *
  * Copyright (c) 2015 James Warwood
  * Licensed under the MIT license.
@@ -12,7 +12,7 @@ var expect = require('chai').expect;
 
 var utils = require('../../lib/utils');
 
-describe('hslint utils', function() {
+describe('i18n-lint utils', function() {
   describe('isHardcodedString', function() {
     it('should return true for hardcoded strings', function() {
       var inputs = [

@@ -1,5 +1,5 @@
 /**
- * hslint default reporter tests
+ * i18n-lint default reporter tests
  *
  * @TODO make stdout hooking DRY
  *
@@ -20,7 +20,7 @@ var hooker = require('hooker');
 var errors = require('../../fixtures/errors/1.js')();
 var reporter = require('../../../lib/reporters/unix.js');
 
-describe('hslint reporters unix', function() {
+describe('i18n-lint reporters unix', function() {
   it('should format the output correctly', function() {
 
     // Setup
