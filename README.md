@@ -139,9 +139,9 @@ To use `i18n-lint` as a library, install it locally and `require` it in your pro
 ```
 
 ```javascript
-var i18nLint = require('i18n-lint');
+var I18nLint = require('i18n-lint');
 
-var errors = i18nLint('some_file.ejs', {
+var errors = I18nLint('some_file.ejs', {
   templateDelimiters: ['<%','%>'],
   attributes: ['title', 'alt', 'data-custom-attr']
 });
@@ -150,7 +150,7 @@ var errors = i18nLint('some_file.ejs', {
 If you want to scan a string instead of reading in a file, you can use the `scan` function:
 
 ```javascript
-var i18n-lint = require('i18n-lint');
+var I18nLint = require('i18n-lint');
 
 var context = '<h1>Some hardcoded string</h1>\n<br>\n<p>\ncontent not translated</p>';
 
@@ -158,13 +158,13 @@ var options = {
   // ...snip...
 };
 
-var errors = i18n-lint.scan(context, options);
+var errors = I18nLint.scan(context, options);
 ```
 
 The scan function can also accept a `fileName` parameter:
 
 ```javascript
-var i18n-lint = require('i18n-lint');
+var I18nLint = require('i18n-lint');
 
 var stdin = '';
 
@@ -172,7 +172,7 @@ var stdin = '';
 // ...snip...
 
 // Once stdin has finished...
-var errors = i18n-lint(context, options, 'stdin');
+var errors = I18nLint(context, options, 'stdin');
 ```
 
 This allows more meaningful output when the reporters print a filename.
