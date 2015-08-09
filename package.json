@@ -13,7 +13,9 @@
   },
   "main": "lib/i18n-lint.js",
   "scripts": {
-    "test": "jshint bin/ lib/ test/ && mocha --recursive"
+    "test": "./node_modules/.bin/jshint bin/ lib/ test/ && ./node_modules/.bin/mocha --recursive",
+    "coverage": "./node_modules/.bin/istanbul cover _mocha -- -R spec --recursive",
+    "update-coverage": "npm run-script coverage && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
   },
   "author": {
     "name": "James Warwood",
@@ -39,6 +41,7 @@
     "chai": "^2.3.0",
     "coveralls": "^2.11.2",
     "hooker": "^0.2.3",
+    "istanbul": "^0.3.17",
     "jshint": "^2.7.0",
     "mocha": "^2.2.4",
     "mocha-lcov-reporter": "0.0.2",
