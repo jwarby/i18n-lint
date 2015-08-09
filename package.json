@@ -14,8 +14,7 @@
   "main": "lib/i18n-lint.js",
   "scripts": {
     "test": "./node_modules/.bin/jshint bin/ lib/ test/ && ./node_modules/.bin/mocha --recursive",
-    "coverage": "./node_modules/.bin/istanbul cover _mocha -- -R spec --recursive",
-    "update-coverage": "npm run-script coverage && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls"
+    "coverage": "./node_modules/.bin/istanbul cover _mocha -- -R spec --recursive"
   },
   "author": {
     "name": "James Warwood",
