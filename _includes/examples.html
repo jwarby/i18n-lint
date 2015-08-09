@@ -9,27 +9,27 @@
 
       <h4>Lint a single HTML file</h4>
       {% highlight bash %}
-      $ hslint index.html
+      $ i18n-lint index.html
       {% endhighlight %}
       <h4>Lint a single EJS file</h4>
       {% highlight bash %}
-$ hslint -t "<%,%>" index.ejs
-$ hslint --template-delimiters "<%,%>" index.ejs
+$ i18n-lint -t "<%,%>" index.ejs
+$ i18n-lint --template-delimiters "<%,%>" index.ejs
       {% endhighlight %}
       <h4>Lint multiple files</h4>
       {% highlight bash %}
-$ hslint *.html
-$ hslint somewhere/**/*.html
+$ i18n-lint *.html
+$ i18n-lint somewhere/**/*.html
       {% endhighlight %}
       <h4>Check 'content', 'title' and 'alt' HTML attributes</h4>
       {% highlight bash %}
-$ hslint -a "content,title,alt" *.html
-$ hslint --attributes "content,title,alt" *.html
+$ i18n-lint -a "content,title,alt" *.html
+$ i18n-lint --attributes "content,title,alt" *.html
       {% endhighlight %}
       <h4>Ignore all 'script', 'style' and 'meta' tags</h4>
       {% highlight bash %}
-$ hslint -i "script,style,meta" *.html
-$ hslint --ignore-tags "script,style,meta" *.html
+$ i18n-lint -i "script,style,meta" *.html
+$ i18n-lint --ignore-tags "script,style,meta" *.html
       {% endhighlight %}
     </div>
 
@@ -38,27 +38,27 @@ $ hslint --ignore-tags "script,style,meta" *.html
 
       <h4>Lint a single HTML file</h4>
       {% highlight javascript %}
-      var errors = hslint('myfile.html');
+      var errors = I18nLint('myfile.html');
       {% endhighlight %}
       <h4>Lint a single EJS file</h4>
       {% highlight javascript %}
-var errors = hslint('myfile.ejs', {
+var errors = I18nLint('myfile.ejs', {
   templateDelimiters: ['<%', '%>']
 });
       {% endhighlight %}
       <h4>Lint multiple files</h4>
       {% highlight javascript %}
-      var errors = hslint('somewhere/**/*.html');
+      var errors = I18nLint('somewhere/**/*.html');
       {% endhighlight %}
       <h4>Check 'content', 'title' and 'alt' HTML attributes</h4>
       {% highlight javascript %}
-var errors = hslint('myfile.ejs', {
+var errors = I18nLint('myfile.ejs', {
   attributes: ['content', 'title', 'alt']
 });
       {% endhighlight %}
       <h4>Ignore all 'script', 'style' and 'meta' tags</h4>
       {% highlight javascript %}
-var errors = hslint('myfile.ejs', {
+var errors = I18nLint('myfile.ejs', {
   ignoreTags: ['script', 'style', 'meta']
 });
       {% endhighlight %}

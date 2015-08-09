@@ -6,14 +6,14 @@
     <div class="col-md-4">
       <h2>CLI</h2>
       <div class="feature">
-        <p>Installing HSLint globally via npm gives you the <code>hslint</code> binary.</p>
+        <p>Installing i18n-lint globally via npm gives you the <code>i18n-lint</code> binary.</p>
         {% highlight bash %}
-        $ npm install -g hslint
+        $ npm install -g i18n-lint
         {% endhighlight %}
         {% highlight bash %}
-        $ hslint --help
+        $ i18n-lint --help
 
-Usage: hslint [OPTIONS] <file ...>
+Usage: i18n-lint [OPTIONS] <file ...>
 
 Options:
 
@@ -31,14 +31,14 @@ Options:
     <div class="col-md-4">
       <h2>API</h2>
       <div class="feature">
-        <p>HSLint can be used in other projects as a library.  After installing, simply require the module.</p>
+        <p>i18n-lint can be used in other projects as a library.  After installing, simply require the module.</p>
         {% highlight bash %}
-        $ npm install --save hslint
+        $ npm install --save i18n-lint
         {% endhighlight %}
         {% highlight javascript %}
-        var hslint = require('hslint');
+        var I18nLint = require('i18n-lint');
 
-hslint('myfile.html', {
+I18nLint('myfile.html', {
 // ... options ...
 });
 {% endhighlight %}
@@ -48,17 +48,17 @@ hslint('myfile.html', {
     <div class="col-md-4">
       <h2>Grunt Plugin</h2>
       <div class="feature">
-        <p>Integrate HSLint with <a href="http://gruntjs.com">grunt</a> and make it part of your build step using <a href="https://github.com/jwarby/grunt-hslint">grunt-hslint</a>.</p>
+        <p>Integrate i18n-lint with <a href="http://gruntjs.com">grunt</a> and make it part of your build step using <a href="https://github.com/jwarby/grunt-i18nlint">grunt-i18nlint</a>.</p>
         {% highlight bash %}
-        $ npm install --save-dev grunt-hslint
+        $ npm install --save-dev grunt-i18nlint
         {% endhighlight %}
         {% highlight javascript %}
         // Gruntfile.js
-grunt.loadNpmTasks('grunt-hslint');
+grunt.loadNpmTasks('grunt-i18nlint');
 
 grunt.initConfig({
   // ... snip ...
-  hslint: {
+  i18nlint: {
     // ... task config ...
   }
   // ... snip ...

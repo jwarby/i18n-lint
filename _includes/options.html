@@ -43,7 +43,7 @@
       </p>
 
       <h3>Returned Data</h3>
-      The <code>hslint</code> function returns an array containing objects which describe the error.  Each object looks like this:
+      The <code>i18n-lint</code> function returns an array containing objects which describe the error.  Each object looks like this:
       {% highlight javascript %}
 {
   file: String, // the file that was being linted when the error was found
@@ -79,15 +79,15 @@
       </table>
 
       <h3>Using Reporters</h3>
-      <p>Reporters can still be used when using HSLint as a library.  Built-in reporters are stored in <code>hslint.reporters</code>:</p>
+      <p>Reporters can still be used when using i18n-lint as a library.  Built-in reporters are stored in <code>require('i18n-lint').reporters</code>:</p>
       {% highlight javascript %}
-var hslint = require('hslint');
+var I18nLint = require('i18n-lint');
 
-console.log(hslint.reporters);
+console.log(I18nLint.reporters);
 // {
 //   default: [Function]
 // }
-reporter(hslint('myfile.html'));
+reporter(I18nLint('myfile.html'));
       {% endhighlight %}
     </div>
   </div>
