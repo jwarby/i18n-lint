@@ -137,43 +137,54 @@
     <h1>Installation</h1>
   </div>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
       <h2>CLI</h2>
       <div class="feature">
         <p>Installing HSLint globally via npm gives you the <code>hslint</code> binary.</p>
         <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install -g hslint</code></pre></div>
         <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>hslint --help
 
-Usage: hslint <span class="o">[</span>OPTIONS<span class="o">]</span> &lt;file ...&gt;
+  Usage: hslint <span class="o">[</span>OPTIONS<span class="o">]</span> &lt;file ...&gt;
 
-Options:
+  Options:
 
-  -h, --help
-  -V, --version
-  -a, --attributes &lt;attributes&gt;
-  -i, --ignore-tags &lt;tags&gt;
-  -t, --template-delimiters &lt;delimiters&gt;
-  -r, --reporter &lt;reporter&gt;</code></pre></div>
+    -h, --help                              output usage information
+    -V, --version                           output the version number
+    -a, --attributes &lt;attributes&gt;           Comma-separated list of HTML attributes to lint <span class="o">(</span>default: <span class="s1">&#39;alt,title&#39;</span><span class="o">)</span>
+    -i, --ignore-tags &lt;tags&gt;                Comma-separated list of names of tags to ignore whilst linting <span class="o">(</span>default: <span class="s1">&#39;script,style&#39;</span><span class="o">)</span>
+    -t, --template-delimiters &lt;delimiters&gt;  Template delimiters used in <span class="nb">source </span>files.  For example, Mustache-like templating languages should use <span class="s1">&#39;&#39;</span>
+    -r, --reporter &lt;reporter&gt;               Specify which reporter to output results with
+    --exclude &lt;exclusion patterns&gt;          Comma-separated list of glob patterns to ignore,  e.g. <span class="s2">&quot;/test_subdir/,ignored.html&quot;</span>
+    --color                                 Force colored output
+    --no-color                              Disable colored output
+
+  Use <span class="sb">`</span>man hslint<span class="sb">`</span> <span class="k">for</span> more information</code></pre></div>
       </div>
     </div>
-    <!-- /.col-md-4 -->
-    <div class="col-md-4">
+    <!-- /.col-md-12 -->
+    <div class="col-md-12">
       <h2>API</h2>
       <div class="feature">
-        <p>HSLint can be used in other projects as a library.  After installing, simply require the module.</p>
+        <p>HSLint can be used in other projects as a library.  Install it and then just require it:</p>
         <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install --save hslint</code></pre></div>
         <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">hslint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;hslint&#39;</span><span class="p">);</span>
 
-<span class="nx">hslint</span><span class="p">(</span><span class="s1">&#39;myfile.html&#39;</span><span class="p">,</span> <span class="p">{</span>
-<span class="c1">// ... options ...</span>
+<span class="c1">// Lint a file</span>
+<span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">hslint</span><span class="p">(</span><span class="s1">&#39;myfile.html&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="c1">// ... options ...</span>
+<span class="p">});</span>
+
+<span class="c1">// Lint a string</span>
+<span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">hslint</span><span class="p">.</span><span class="nx">scan</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;Untranslated String!&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="c1">// ...options...</span>
 <span class="p">});</span></code></pre></div>
       </div>
     </div>
-    <!-- /.col-md-4 -->
-    <div class="col-md-4">
+    <!-- /.col-md-12 -->
+    <div class="col-md-12">
       <h2>Grunt Plugin</h2>
       <div class="feature">
-        <p>Integrate HSLint with <a href="http://gruntjs.com">grunt</a> and make it part of your build step using <a href="https://github.com/jwarby/grunt-hslint">grunt-hslint</a>.</p>
+        <p>HSLint is also available as a <a href="http://gruntjs.com">grunt</a> plugin: <a href="https://github.com/jwarby/grunt-hslint">grunt-hslint</a>.</p>
         <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install --save-dev grunt-hslint</code></pre></div>
         <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Gruntfile.js</span>
 <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-hslint&#39;</span><span class="p">);</span>
@@ -187,7 +198,7 @@ Options:
 <span class="p">});</span></code></pre></div>
       </div>
     </div>
-    <!-- /.col-md-4 -->
+    <!-- /.col-md-12 -->
   </div>
 </section>
 
@@ -200,7 +211,7 @@ Options:
   </div>
 
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-lg-12">
       <h2>CLI</h2>
 
       After installing, you should be able to type <code>hslint</code> into a terminal.
@@ -218,7 +229,7 @@ Options:
 <span class="nv">$ </span>hslint --some-option <span class="s2">&quot;someValue&quot;</span> views/**/*.html</code></pre></div>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-12">
       <h2>API</h2>
 
       After installing, you can <code>require</code> the <code>hslint</code> lint module in your
@@ -242,8 +253,6 @@ Options:
   <a class="pull-right back-to-top" href="#" data-ga-category="buttons" data-ga-label="navigation" data-ga-value="back-to-top"><i class="fa fa-angle-up"></i> Back to top</a>
 
   <hr>
-<<<<<<< HEAD
-=======
   <section id="reporters">
   <div class="row text-center">
     <h1>Reporters</h1>
@@ -309,6 +318,37 @@ test/fixtures/1.html: line 3, column 19, Hardcoded alt attribute
             </pre>
             </td>
           </tr>
+          <tr>
+            <td>json</td>
+            <td class="highlight">
+            <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>
+  <span class="o">{</span>
+    <span class="s2">&quot;file&quot;</span>: <span class="s2">&quot;test/fixtures/1.html&quot;</span>,
+    <span class="s2">&quot;error&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;(error)&quot;</span>,
+      <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;W001&quot;</span>,
+      <span class="s2">&quot;reason&quot;</span>: <span class="s2">&quot;Hardcoded &lt;h1&gt; tag&quot;</span>,
+      <span class="s2">&quot;evidence&quot;</span>: <span class="s2">&quot;/(Hardcoded h1)/&quot;</span>,
+      <span class="s2">&quot;line&quot;</span>: 2,
+      <span class="s2">&quot;character&quot;</span>: 6,
+      <span class="s2">&quot;scope&quot;</span>: <span class="s2">&quot;  &lt;h1&gt;Hardcoded h1&lt;/h1&gt;&quot;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>,
+  <span class="o">{</span>
+    <span class="s2">&quot;file&quot;</span>: <span class="s2">&quot;test/fixtures/1.html&quot;</span>,
+    <span class="s2">&quot;error&quot;</span>: <span class="o">{</span>
+      <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;(error)&quot;</span>,
+      <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;W002&quot;</span>,
+      <span class="s2">&quot;reason&quot;</span>: <span class="s2">&quot;Hardcoded &#39;alt&#39; attribute&quot;</span>,
+      <span class="s2">&quot;evidence&quot;</span>: <span class="s2">&quot;/(hardcoded alt)/&quot;</span>,
+      <span class="s2">&quot;line&quot;</span>: 3,
+      <span class="s2">&quot;character&quot;</span>: 19,
+      <span class="s2">&quot;scope&quot;</span>: <span class="s2">&quot;  &lt;a href=\&quot;#\&quot; alt=\&quot;hardcoded alt\&quot;&gt;&lt;%= translation %&gt;&lt;/a&gt;&quot;</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">]</span></code></pre></div>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
@@ -318,7 +358,6 @@ test/fixtures/1.html: line 3, column 19, Hardcoded alt attribute
   <a class="pull-right back-to-top" href="#" data-ga-category="buttons" data-ga-label="navigation" data-ga-value="back-to-top"><i class="fa fa-angle-up"></i> Back to top</a>
 
   <hr>
->>>>>>> 947d4b4... Initial gh-pages commit
   <section id="options">
   <div class="row text-center">
     <h1>Options</h1>
@@ -482,6 +521,18 @@ test/fixtures/1.html: line 3, column 19, Hardcoded alt attribute
   <h2>Releases</h2>
   <p>To see all releases of the plugin, please visit the
   <a data-ga-category="gtihub links" data-ga-label="releases" href="https://github.com/jwarby/hslint/releases">releases page on GitHub</a></p>
+
+  <h2>Status</h2>
+  <p>
+    <a href="http://semver.org/spec/v2.0.0.html"><img src="https://camo.githubusercontent.com/be43dfc2eecd110cf914d0897ab9d89bffd7c764/68747470733a2f2f62616467652e667572792e696f2f67682f6a776172627925324668736c696e742e737667" alt="GitHub version" data-canonical-src="https://badge.fury.io/gh/jwarby%2Fhslint.svg" style="max-width:100%;"></a>
+    <a href="https://travis-ci.org/jwarby/hslint"><img src="https://camo.githubusercontent.com/24281fdb3d979d4c131c8b7d0712b017daf918b8/68747470733a2f2f7365637572652e7472617669732d63692e6f72672f6a77617262792f68736c696e742e706e673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://secure.travis-ci.org/jwarby/hslint.png?branch=master" style="max-width:100%;"></a>
+    <a href="https://david-dm.org/jwarby/hslint"><img src="https://camo.githubusercontent.com/9efbf57f61e7d2636c9c1a06f830bfac34eaac2d/68747470733a2f2f64617669642d646d2e6f72672f6a77617262792f68736c696e742e7376673f7374796c653d666c6174" alt="Dependency Status" data-canonical-src="https://david-dm.org/jwarby/hslint.svg?style=flat" style="max-width:100%;"></a>
+    <a href="https://david-dm.org/jwarby/hslint#info=devDependencies"><img src="https://camo.githubusercontent.com/cce172a54d4dc1aef54435b7902fd0f485b3d78e/68747470733a2f2f64617669642d646d2e6f72672f6a77617262792f68736c696e742f6465762d7374617475732e7376673f7374796c653d666c6174" alt="devDependency Status" data-canonical-src="https://david-dm.org/jwarby/hslint/dev-status.svg?style=flat" style="max-width:100%;"></a>
+    <a href="https://codeclimate.com/repos/5552ffb3e30ba05e900189ff/feed"><img src="https://camo.githubusercontent.com/773a2c889b197fa378854802d1b9ba31b82fa86c/68747470733a2f2f636f6465636c696d6174652e636f6d2f7265706f732f3535353266666233653330626130356539303031383966662f6261646765732f63666463346361656134313238386632633631302f6770612e737667" alt="Code Climate" data-canonical-src="https://codeclimate.com/repos/5552ffb3e30ba05e900189ff/badges/cfdc4caea41288f2c610/gpa.svg" style="max-width:100%;"></a>
+    <a href="https://codeclimate.com/repos/5552ffb3e30ba05e900189ff/coverage"><img src="https://camo.githubusercontent.com/2da4deba6ceed81995dae18877c5b08c5cdee5e2/68747470733a2f2f636f6465636c696d6174652e636f6d2f7265706f732f3535353266666233653330626130356539303031383966662f6261646765732f63666463346361656134313238386632633631302f636f7665726167652e737667" alt="Test Coverage" data-canonical-src="https://codeclimate.com/repos/5552ffb3e30ba05e900189ff/badges/cfdc4caea41288f2c610/coverage.svg" style="max-width:100%;"></a>
+    <a href="http://localhost:9000/api/status/jwarby/hslint"><img src="http://localhost:9000/api/status/jwarby/hslint" alt="Untranslated strings which affect i18n" style="max-width:100%;"></a>
+    <a href="https://img.shields.io/github/issues/jwarby/hslint.svg"><img src="https://img.shields.io/github/issues/jwarby/hslint.svg"></a>
+  </p>
 
 </section>
 

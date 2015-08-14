@@ -30,6 +30,9 @@ body .container .jumbotron.row a {
   margin-right: 20px;
   font-size: 2em;
 }
+#about a {
+  display: block;
+}
 footer {
   border-top: 1px solid #eee;
   margin-top: 50px;

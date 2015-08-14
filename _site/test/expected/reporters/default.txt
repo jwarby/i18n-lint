@@ -1,0 +1,6 @@
+
+  somefile.html
+     5 |   <p>Something</p>
+              ^ Hardcoded <p> tag
+     7 |   <a href="#" alt="Oops">{{ not.hardcoded }}</a>
+                            ^ Hardcoded 'alt' attribute

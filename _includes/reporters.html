@@ -67,6 +67,39 @@ test/fixtures/1.html: line 3, column 19, Hardcoded alt attribute
             </pre>
             </td>
           </tr>
+          <tr>
+            <td>json</td>
+            <td class="highlight">
+            {% highlight bash %}
+[
+  {
+    "file": "test/fixtures/1.html",
+    "error": {
+      "id": "(error)",
+      "code": "W001",
+      "reason": "Hardcoded <h1> tag",
+      "evidence": "/(Hardcoded h1)/",
+      "line": 2,
+      "character": 6,
+      "scope": "  <h1>Hardcoded h1</h1>"
+    }
+  },
+  {
+    "file": "test/fixtures/1.html",
+    "error": {
+      "id": "(error)",
+      "code": "W002",
+      "reason": "Hardcoded 'alt' attribute",
+      "evidence": "/(hardcoded alt)/",
+      "line": 3,
+      "character": 19,
+      "scope": "  <a href=\"#\" alt=\"hardcoded alt\"><%= translation %></a>"
+    }
+  }
+]
+            {% endhighlight %}
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

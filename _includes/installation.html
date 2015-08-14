@@ -3,7 +3,7 @@
     <h1>Installation</h1>
   </div>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
       <h2>CLI</h2>
       <div class="feature">
         <p>Installing HSLint globally via npm gives you the <code>hslint</code> binary.</p>
@@ -13,42 +13,54 @@
         {% highlight bash %}
         $ hslint --help
 
-Usage: hslint [OPTIONS] <file ...>
+  Usage: hslint [OPTIONS] <file ...>
 
-Options:
+  Options:
 
-  -h, --help
-  -V, --version
-  -a, --attributes <attributes>
-  -i, --ignore-tags <tags>
-  -t, --template-delimiters <delimiters>
-  -r, --reporter <reporter>
+    -h, --help                              output usage information
+    -V, --version                           output the version number
+    -a, --attributes <attributes>           Comma-separated list of HTML attributes to lint (default: 'alt,title')
+    -i, --ignore-tags <tags>                Comma-separated list of names of tags to ignore whilst linting (default: 'script,style')
+    -t, --template-delimiters <delimiters>  Template delimiters used in source files.  For example, Mustache-like templating languages should use '{{,}}'
+    -r, --reporter <reporter>               Specify which reporter to output results with
+    --exclude <exclusion patterns>          Comma-separated list of glob patterns to ignore,  e.g. "/test_subdir/,ignored.html"
+    --color                                 Force colored output
+    --no-color                              Disable colored output
+
+  Use `man hslint` for more information
+
 
 {% endhighlight %}
       </div>
     </div>
-    <!-- /.col-md-4 -->
-    <div class="col-md-4">
+    <!-- /.col-md-12 -->
+    <div class="col-md-12">
       <h2>API</h2>
       <div class="feature">
-        <p>HSLint can be used in other projects as a library.  After installing, simply require the module.</p>
+        <p>HSLint can be used in other projects as a library.  Install it and then just require it:</p>
         {% highlight bash %}
         $ npm install --save hslint
         {% endhighlight %}
         {% highlight javascript %}
         var hslint = require('hslint');
 
-hslint('myfile.html', {
-// ... options ...
+// Lint a file
+var errors = hslint('myfile.html', {
+  // ... options ...
+});
+
+// Lint a string
+var errors = hslint.scan('<div>Untranslated String!</div>', {
+  // ...options...
 });
 {% endhighlight %}
       </div>
     </div>
-    <!-- /.col-md-4 -->
-    <div class="col-md-4">
+    <!-- /.col-md-12 -->
+    <div class="col-md-12">
       <h2>Grunt Plugin</h2>
       <div class="feature">
-        <p>Integrate HSLint with <a href="http://gruntjs.com">grunt</a> and make it part of your build step using <a href="https://github.com/jwarby/grunt-hslint">grunt-hslint</a>.</p>
+        <p>HSLint is also available as a <a href="http://gruntjs.com">grunt</a> plugin: <a href="https://github.com/jwarby/grunt-hslint">grunt-hslint</a>.</p>
         {% highlight bash %}
         $ npm install --save-dev grunt-hslint
         {% endhighlight %}
@@ -66,6 +78,6 @@ grunt.initConfig({
 {% endhighlight %}
       </div>
     </div>
-    <!-- /.col-md-4 -->
+    <!-- /.col-md-12 -->
   </div>
 </section>
