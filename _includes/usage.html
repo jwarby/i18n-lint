@@ -7,41 +7,41 @@
     <div class="col-lg-12">
       <h2>CLI</h2>
 
-      After installing, you should be able to type <code>hslint</code> into a terminal.
+      After installing, you should be able to type <code>i18n-lint</code> into a terminal.
 
       {% highlight bash %}
 # Display version and exit
-$ hslint --version
+$ i18n-lint --version
 
 # Lint myfile.html
-$ hslint myfile.html
+$ i18n-lint myfile.html
 
 # Lint all HTML files using a glob pattern
-$ hslint views/**/*.html
+$ i18n-lint views/**/*.html
 
 # Set options using --<option name> <optionValue>
-$ hslint --some-option "someValue" views/**/*.html
+$ i18n-lint --some-option "someValue" views/**/*.html
       {% endhighlight %}
     </div>
 
     <div class="col-lg-12">
       <h2>API</h2>
 
-      After installing, you can <code>require</code> the <code>hslint</code> lint module in your
+      After installing, you can <code>require</code> the <code>i18n-lint</code> lint module in your
       code.
 
       {% highlight javascript %}
 // Require the module
-var hslint = require('hslint');
+var i18nlint = require('i18n-lint');
 
 // Lint myfile.html
-var errors = hslint('myfile.html');
+var errors = i18nlint('myfile.html');
 
 // Lint all HTML files using a glob pattern
-var errors = hslint('views/**/*.html');
+var errors = i18nlint('views/**/*.html');
 
 // Set options using an object as the second parameter
-var errors = hslint('views/**/*.html', { /*some options*/ });
+var errors = i18nlint('views/**/*.html', { /*some options*/ });
       {% endhighlight %}
     </div>
   </div>

@@ -1,10 +1,10 @@
 {
-  "name": "hslint",
+  "name": "i18n-lint",
   "version": "0.0.0",
   "authors": [
     "James Warwood <james.duncan.1991@googlemail.com>"
   ],
-  "description": "HSLint pages",
+  "description": "i18n-lint pages",
   "license": "MIT",
   "private": true,
   "ignore": [

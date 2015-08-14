@@ -1,5 +1,5 @@
 /**
- * hslint json reporter tests
+ * i18n-lint json reporter tests
  *
  * Copyright (c) 2015 James Warwood
  * Licensed under the MIT license.
@@ -17,7 +17,7 @@ var reporter = require('../../../lib/reporters/json.js').reporter;
 
 var errors = require('../../fixtures/errors/1.js')();
 
-describe('hslint reporters json', function() {
+describe('i18n-lint reporters json', function() {
   it('should format the output correctly', function(done) {
     var actual = '';
 

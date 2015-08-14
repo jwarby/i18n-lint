@@ -1,5 +1,5 @@
 /**
- * hslint bin tests
+ * i18n-lint bin tests
  *
  * Copyright (c) 2014 James Warwood
  * Licensed under the MIT license.
@@ -13,8 +13,8 @@ var path = require('path');
 
 var pkg = require('../../package.json');
 
-describe('hslint bin', function() {
-	var cmd = 'node ' + path.join(__dirname, '../../bin/hslint') + ' ';
+describe('i18n-lint bin', function() {
+	var cmd = 'node ' + path.join(__dirname, '../../bin/i18n-lint') + ' ';
 
 	it('--help should run without errors', function(done) {
 		exec(cmd + '--help', function (error, stdout, stderr) {

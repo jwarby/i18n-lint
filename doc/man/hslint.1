@@ -1,11 +1,11 @@
 .TH HSLINT 1 "14 January 2015"
 .SH NAME
-hslint \- Lint HTML and template source files for hardcoded (untranslated)
+i18n-lint \- Lint HTML and template source files for hardcoded (untranslated)
 strings
 .SH SYNOPSIS
-\fBhslint\fP [OPTIONS] [FILES]
+\fBi18n-lint\fP [OPTIONS] [FILES]
 .SH DESCRIPTION
-\fBhslint\fP scans the DOM structure of the input files, and tries to find text
+\fBi18n-lint\fP scans the DOM structure of the input files, and tries to find text
 nodes and attributes whose values look like hardcoded strings.  Various options
 allow for control of which tags and attributes to check, and which template
 delimiters the source files.
@@ -34,7 +34,7 @@ A comma-separated list of tags to ignore when searching for hardcoded strings.
 Defaults 'script,style'.
 .TP
 \fB-t, --template-delimiters \fIDELIMITERS\fP
-Tell \fBhslint\fP that the source files use template delimiters.  For example,
+Tell \fBi18n-lint\fP that the source files use template delimiters.  For example,
 templating languages with Mustache-style syntax should set this to '{{,}}'.
 .TP
 \fB--color/no-color\fP
@@ -43,17 +43,17 @@ Maintain or turn off colored output. See https://www.npmjs.com/package/chalk#cha
 .SH EXAMPLES
 
 .RE
-.SS \fBhslint *.html\fP
+.SS \fBi18n-lint *.html\fP
 Lint HTML files using default options
 
-.SS \fBhslint -t \(dq<%,%>\(dq *.ejs\fP
-Lint EJS files, telling \fBhslint\fP that template content is delimited by '<%'
+.SS \fBi18n-lint -t \(dq<%,%>\(dq *.ejs\fP
+Lint EJS files, telling \fBi18n-lint\fP that template content is delimited by '<%'
 and '%>'
 
-.SS \fBhslint -a \(dqtitle,content,alt\(dq *.html\fP
+.SS \fBi18n-lint -a \(dqtitle,content,alt\(dq *.html\fP
 Lint HTML files, and check the title, content and alt attributes of each element
 
-.SS \fBhslint -i \(dqdiv,h1\(dq -t \(dq{{,}}\(dq *.hbs\fP
+.SS \fBi18n-lint -i \(dqdiv,h1\(dq -t \(dq{{,}}\(dq *.hbs\fP
 Lint all .hbs files, using Mustache-like template delimiters and ignoring the
 text and attributes of any <div> or <h1> elements
 
@@ -82,7 +82,7 @@ Copyright (c) 2015 James Warwood
 Licensed under the MIT license \fIhttp://en.wikipedia.org/wiki/MIT_License\fP
 
 .SH BUGS AND FEATURE REQUESTS
-Please log bugs and feature requests at \fIhttps://github.com/jwarby/hslint/issues\fP
+Please log bugs and feature requests at \fIhttps://github.com/jwarby/i18n-lint/issues\fP
 
 .SH ACKNOWLEDGEMENTS
 

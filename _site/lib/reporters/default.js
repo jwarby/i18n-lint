@@ -1,5 +1,5 @@
 /**
- * hslint default reporter
+ * i18n-lint default reporter
  *
  * Copyright (c) 2014 James Warwood
  * Licensed under the MIT license.

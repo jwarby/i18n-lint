@@ -1,5 +1,5 @@
 /**
- * hslint simple reporter tests
+ * i18n-lint simple reporter tests
  *
  * Copyright (c) 2015 James Warwood
  * Licensed under the MIT license.
@@ -16,7 +16,7 @@ var reporter = require('../../../lib/reporters/simple.js').reporter;
 
 var data = require('../../fixtures/errors/1.js')();
 
-describe('hslint reporters simple', function() {
+describe('i18n-lint reporters simple', function() {
   it('should format the output correctly', function(done) {
     var actual = '';
 

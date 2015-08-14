@@ -6,14 +6,14 @@
     <div class="col-md-12">
       <h2>CLI</h2>
       <div class="feature">
-        <p>Installing HSLint globally via npm gives you the <code>hslint</code> binary.</p>
+        <p>Installing i18n-lint globally via npm gives you the <code>i18n-lint</code> binary.</p>
         {% highlight bash %}
-        $ npm install -g hslint
+        $ npm install -g i18n-lint
         {% endhighlight %}
         {% highlight bash %}
-        $ hslint --help
+        $ i18n-lint --help
 
-  Usage: hslint [OPTIONS] <file ...>
+  Usage: i18n-lint [OPTIONS] <file ...>
 
   Options:
 
@@ -27,7 +27,7 @@
     --color                                 Force colored output
     --no-color                              Disable colored output
 
-  Use `man hslint` for more information
+  Use `man i18n-lint` for more information
 
 
 {% endhighlight %}
@@ -37,20 +37,20 @@
     <div class="col-md-12">
       <h2>API</h2>
       <div class="feature">
-        <p>HSLint can be used in other projects as a library.  Install it and then just require it:</p>
+        <p>i18n-lint can be used in other projects as a library.  Install it and then just require it:</p>
         {% highlight bash %}
-        $ npm install --save hslint
+        $ npm install --save i18n-lint
         {% endhighlight %}
         {% highlight javascript %}
-        var hslint = require('hslint');
+        var i18nlint = require('i18n-lint');
 
 // Lint a file
-var errors = hslint('myfile.html', {
+var errors = i18nlint('myfile.html', {
   // ... options ...
 });
 
 // Lint a string
-var errors = hslint.scan('<div>Untranslated String!</div>', {
+var errors = i18nlint.scan('<div>Untranslated String!</div>', {
   // ...options...
 });
 {% endhighlight %}
@@ -60,17 +60,17 @@ var errors = hslint.scan('<div>Untranslated String!</div>', {
     <div class="col-md-12">
       <h2>Grunt Plugin</h2>
       <div class="feature">
-        <p>HSLint is also available as a <a href="http://gruntjs.com">grunt</a> plugin: <a href="https://github.com/jwarby/grunt-hslint">grunt-hslint</a>.</p>
+        <p>i18n-lint is also available as a <a href="http://gruntjs.com">grunt</a> plugin: <a href="https://github.com/jwarby/grunt-i18n-lint">grunt-i18nlint</a>.</p>
         {% highlight bash %}
-        $ npm install --save-dev grunt-hslint
+        $ npm install --save-dev grunt-i18nlint
         {% endhighlight %}
         {% highlight javascript %}
         // Gruntfile.js
-grunt.loadNpmTasks('grunt-hslint');
+grunt.loadNpmTasks('grunt-i18nlint');
 
 grunt.initConfig({
   // ... snip ...
-  hslint: {
+  i18nlint: {
     // ... task config ...
   }
   // ... snip ...

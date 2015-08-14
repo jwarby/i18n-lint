@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="HSLint, tool for linting HTML and template source files for hardcoded string">
+    <meta name="description" content="i18n-lint, tool for linting HTML and template source files for hardcoded string">
     <meta name="author" content="James Warwood">
 
-    <title>hslint, tool for linting HTML and template source files for hardcoded strings</title>
+    <title>i18n-lint, tool for linting HTML and template source files for hardcoded strings</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -66,7 +66,7 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">HSLint</a>
+      <a class="navbar-brand" href="#">i18n-lint</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -107,11 +107,11 @@
     </div>
     <!-- /.col-md-8 -->
     <div class="col-md-4">
-      <h1>HSLint</h1>
+      <h1>i18n-lint</h1>
       <p>Lint HTML and template source files for hardcoded strings</p>
       <p class="github-links">
-      <a data-ga-category="github links" data-ga-label="home" href="https://github.com/jwarby/hslint" class="btn btn-primary"><i class="fa fa-github"></i> View on GitHub</a>
-      <a data-ga-category="github links" data-ga-label="fork" href="https://github.com/jwarby/hslint/fork" class="btn btn-success"><i class="fa fa-code-fork"></i> Fork me on GitHub!</a>
+      <a data-ga-category="github links" data-ga-label="home" href="https://github.com/jwarby/i18n-lint" class="btn btn-primary"><i class="fa fa-github"></i> View on GitHub</a>
+      <a data-ga-category="github links" data-ga-label="fork" href="https://github.com/jwarby/i18n-lint/fork" class="btn btn-success"><i class="fa fa-code-fork"></i> Fork me on GitHub!</a>
       </p>
     </div>
   <!-- /.col-md-4 -->
@@ -140,11 +140,11 @@
     <div class="col-md-12">
       <h2>CLI</h2>
       <div class="feature">
-        <p>Installing HSLint globally via npm gives you the <code>hslint</code> binary.</p>
-        <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install -g hslint</code></pre></div>
-        <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>hslint --help
+        <p>Installing i18n-lint globally via npm gives you the <code>i18n-lint</code> binary.</p>
+        <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install -g i18n-lint</code></pre></div>
+        <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>i18n-lint --help
 
-  Usage: hslint <span class="o">[</span>OPTIONS<span class="o">]</span> &lt;file ...&gt;
+  Usage: i18n-lint <span class="o">[</span>OPTIONS<span class="o">]</span> &lt;file ...&gt;
 
   Options:
 
@@ -158,24 +158,24 @@
     --color                                 Force colored output
     --no-color                              Disable colored output
 
-  Use <span class="sb">`</span>man hslint<span class="sb">`</span> <span class="k">for</span> more information</code></pre></div>
+  Use <span class="sb">`</span>man i18n-lint<span class="sb">`</span> <span class="k">for</span> more information</code></pre></div>
       </div>
     </div>
     <!-- /.col-md-12 -->
     <div class="col-md-12">
       <h2>API</h2>
       <div class="feature">
-        <p>HSLint can be used in other projects as a library.  Install it and then just require it:</p>
-        <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install --save hslint</code></pre></div>
-        <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">hslint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;hslint&#39;</span><span class="p">);</span>
+        <p>i18n-lint can be used in other projects as a library.  Install it and then just require it:</p>
+        <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install --save i18n-lint</code></pre></div>
+        <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">i18nlint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;i18n-lint&#39;</span><span class="p">);</span>
 
 <span class="c1">// Lint a file</span>
-<span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">hslint</span><span class="p">(</span><span class="s1">&#39;myfile.html&#39;</span><span class="p">,</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">i18nlint</span><span class="p">(</span><span class="s1">&#39;myfile.html&#39;</span><span class="p">,</span> <span class="p">{</span>
   <span class="c1">// ... options ...</span>
 <span class="p">});</span>
 
 <span class="c1">// Lint a string</span>
-<span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">hslint</span><span class="p">.</span><span class="nx">scan</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;Untranslated String!&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">i18nlint</span><span class="p">.</span><span class="nx">scan</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;Untranslated String!&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="p">{</span>
   <span class="c1">// ...options...</span>
 <span class="p">});</span></code></pre></div>
       </div>
@@ -184,14 +184,14 @@
     <div class="col-md-12">
       <h2>Grunt Plugin</h2>
       <div class="feature">
-        <p>HSLint is also available as a <a href="http://gruntjs.com">grunt</a> plugin: <a href="https://github.com/jwarby/grunt-hslint">grunt-hslint</a>.</p>
-        <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install --save-dev grunt-hslint</code></pre></div>
+        <p>i18n-lint is also available as a <a href="http://gruntjs.com">grunt</a> plugin: <a href="https://github.com/jwarby/grunt-i18n-lint">grunt-i18nlint</a>.</p>
+        <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install --save-dev grunt-i18nlint</code></pre></div>
         <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Gruntfile.js</span>
-<span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-hslint&#39;</span><span class="p">);</span>
+<span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-i18nlint&#39;</span><span class="p">);</span>
 
 <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
   <span class="c1">// ... snip ...</span>
-  <span class="nx">hslint</span><span class="o">:</span> <span class="p">{</span>
+  <span class="nx">i18nlint</span><span class="o">:</span> <span class="p">{</span>
     <span class="c1">// ... task config ...</span>
   <span class="p">}</span>
   <span class="c1">// ... snip ...</span>
@@ -214,38 +214,38 @@
     <div class="col-lg-12">
       <h2>CLI</h2>
 
-      After installing, you should be able to type <code>hslint</code> into a terminal.
+      After installing, you should be able to type <code>i18n-lint</code> into a terminal.
 
       <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># Display version and exit</span>
-<span class="nv">$ </span>hslint --version
+<span class="nv">$ </span>i18n-lint --version
 
 <span class="c"># Lint myfile.html</span>
-<span class="nv">$ </span>hslint myfile.html
+<span class="nv">$ </span>i18n-lint myfile.html
 
 <span class="c"># Lint all HTML files using a glob pattern</span>
-<span class="nv">$ </span>hslint views/**/*.html
+<span class="nv">$ </span>i18n-lint views/**/*.html
 
 <span class="c"># Set options using --&lt;option name&gt; &lt;optionValue&gt;</span>
-<span class="nv">$ </span>hslint --some-option <span class="s2">&quot;someValue&quot;</span> views/**/*.html</code></pre></div>
+<span class="nv">$ </span>i18n-lint --some-option <span class="s2">&quot;someValue&quot;</span> views/**/*.html</code></pre></div>
     </div>
 
     <div class="col-lg-12">
       <h2>API</h2>
 
-      After installing, you can <code>require</code> the <code>hslint</code> lint module in your
+      After installing, you can <code>require</code> the <code>i18n-lint</code> lint module in your
       code.
 
       <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="c1">// Require the module</span>
-<span class="kd">var</span> <span class="nx">hslint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;hslint&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">i18nlint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;i18n-lint&#39;</span><span class="p">);</span>
 
 <span class="c1">// Lint myfile.html</span>
-<span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">hslint</span><span class="p">(</span><span class="s1">&#39;myfile.html&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">i18nlint</span><span class="p">(</span><span class="s1">&#39;myfile.html&#39;</span><span class="p">);</span>
 
 <span class="c1">// Lint all HTML files using a glob pattern</span>
-<span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">hslint</span><span class="p">(</span><span class="s1">&#39;views/**/*.html&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">i18nlint</span><span class="p">(</span><span class="s1">&#39;views/**/*.html&#39;</span><span class="p">);</span>
 
 <span class="c1">// Set options using an object as the second parameter</span>
-<span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">hslint</span><span class="p">(</span><span class="s1">&#39;views/**/*.html&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="cm">/*some options*/</span> <span class="p">});</span></code></pre></div>
+<span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">i18nlint</span><span class="p">(</span><span class="s1">&#39;views/**/*.html&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="cm">/*some options*/</span> <span class="p">});</span></code></pre></div>
     </div>
   </div>
 </section>
@@ -260,8 +260,8 @@
 
   <div class="row">
     <div class="col-lg-12">
-      <p>HSLint uses JavaScript functions to handle the output/processing of the errors collected
-      by HSLint.</p>
+      <p>i18n-lint uses JavaScript functions to handle the output/processing of the errors collected
+      by i18n-lint.</p>
 
       <p>For example, here's a basic reporter which reports a count of hardcoded
       strings for each file which contained them:</p>
@@ -279,7 +279,7 @@
 <span class="p">};</span></code></pre></div>
 
       This would produce output similar to:
-      <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>hslint --reporter ~/my_awesome_reporter.js *.html
+      <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>i18n-lint --reporter ~/my_awesome_reporter.js *.html
 index.html
  -- <span class="m">3</span> hardcoded string<span class="o">(</span>s<span class="o">)</span>
 partials/login.html
@@ -310,43 +310,42 @@ partials/profile.html
             </td>
           </tr>
           <tr>
-            <td>simple</td>
+            <td>unix</td>
             <td class="highlight">
-            <pre>
-test/fixtures/1.html: line 2, column 6, Hardcoded &lt;h1&gt; tag
-test/fixtures/1.html: line 3, column 19, Hardcoded alt attribute
-            </pre>
+            <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="c"># file:line:column reason</span>
+<span class="nb">test</span>/fixtures/1.html:2:6 Hardcoded <span class="p">&amp;</span>lt<span class="p">;</span>h1<span class="p">&amp;</span>gt<span class="p">;</span> tag
+<span class="nb">test</span>/fixtures/1.html:3:19 Hardcoded alt attribute</code></pre></div>
             </td>
           </tr>
           <tr>
             <td>json</td>
             <td class="highlight">
-            <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="o">[</span>
-  <span class="o">{</span>
-    <span class="s2">&quot;file&quot;</span>: <span class="s2">&quot;test/fixtures/1.html&quot;</span>,
-    <span class="s2">&quot;error&quot;</span>: <span class="o">{</span>
-      <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;(error)&quot;</span>,
-      <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;W001&quot;</span>,
-      <span class="s2">&quot;reason&quot;</span>: <span class="s2">&quot;Hardcoded &lt;h1&gt; tag&quot;</span>,
-      <span class="s2">&quot;evidence&quot;</span>: <span class="s2">&quot;/(Hardcoded h1)/&quot;</span>,
-      <span class="s2">&quot;line&quot;</span>: 2,
-      <span class="s2">&quot;character&quot;</span>: 6,
-      <span class="s2">&quot;scope&quot;</span>: <span class="s2">&quot;  &lt;h1&gt;Hardcoded h1&lt;/h1&gt;&quot;</span>
-    <span class="o">}</span>
-  <span class="o">}</span>,
-  <span class="o">{</span>
-    <span class="s2">&quot;file&quot;</span>: <span class="s2">&quot;test/fixtures/1.html&quot;</span>,
-    <span class="s2">&quot;error&quot;</span>: <span class="o">{</span>
-      <span class="s2">&quot;id&quot;</span>: <span class="s2">&quot;(error)&quot;</span>,
-      <span class="s2">&quot;code&quot;</span>: <span class="s2">&quot;W002&quot;</span>,
-      <span class="s2">&quot;reason&quot;</span>: <span class="s2">&quot;Hardcoded &#39;alt&#39; attribute&quot;</span>,
-      <span class="s2">&quot;evidence&quot;</span>: <span class="s2">&quot;/(hardcoded alt)/&quot;</span>,
-      <span class="s2">&quot;line&quot;</span>: 3,
-      <span class="s2">&quot;character&quot;</span>: 19,
-      <span class="s2">&quot;scope&quot;</span>: <span class="s2">&quot;  &lt;a href=\&quot;#\&quot; alt=\&quot;hardcoded alt\&quot;&gt;&lt;%= translation %&gt;&lt;/a&gt;&quot;</span>
-    <span class="o">}</span>
-  <span class="o">}</span>
-<span class="o">]</span></code></pre></div>
+            <div class="highlight"><pre><code class="language-json" data-lang="json"><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;file&quot;</span><span class="p">:</span> <span class="s2">&quot;test/fixtures/1.html&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;(error)&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;W001&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;Hardcoded &lt;h1&gt; tag&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;evidence&quot;</span><span class="p">:</span> <span class="s2">&quot;/(Hardcoded h1)/&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;line&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+      <span class="nt">&quot;character&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+      <span class="nt">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;  &lt;h1&gt;Hardcoded h1&lt;/h1&gt;&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;file&quot;</span><span class="p">:</span> <span class="s2">&quot;test/fixtures/1.html&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;error&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;(error)&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;W002&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;reason&quot;</span><span class="p">:</span> <span class="s2">&quot;Hardcoded &#39;alt&#39; attribute&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;evidence&quot;</span><span class="p">:</span> <span class="s2">&quot;/(hardcoded alt)/&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;line&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&quot;character&quot;</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+      <span class="nt">&quot;scope&quot;</span><span class="p">:</span> <span class="s2">&quot;  &lt;a href=\&quot;#\&quot; alt=\&quot;hardcoded alt\&quot;&gt;&lt;%= translation %&gt;&lt;/a&gt;&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span></code></pre></div>
             </td>
           </tr>
         </tbody>
@@ -403,7 +402,7 @@ test/fixtures/1.html: line 3, column 19, Hardcoded alt attribute
       </p>
 
       <h3>Returned Data</h3>
-      The <code>hslint</code> function returns an array containing objects which describe the error.  Each object looks like this:
+      The <code>i18nlint</code> function returns an array containing objects which describe the error.  Each object looks like this:
       <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
   <span class="nx">file</span><span class="o">:</span> <span class="nb">String</span><span class="p">,</span> <span class="c1">// the file that was being linted when the error was found</span>
   <span class="nx">error</span><span class="o">:</span> <span class="p">{</span>
@@ -437,14 +436,14 @@ test/fixtures/1.html: line 3, column 19, Hardcoded alt attribute
       </table>
 
       <h3>Using Reporters</h3>
-      <p>Reporters can still be used when using HSLint as a library.  Built-in reporters are stored in <code>hslint.reporters</code>:</p>
-      <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">hslint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;hslint&#39;</span><span class="p">);</span>
+      <p>Reporters can still be used when using i18n-lint as a library.  Built-in reporters are stored in <code>i18nlint.reporters</code>:</p>
+      <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">i18nlint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;i18n-lint&#39;</span><span class="p">);</span>
 
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">hslint</span><span class="p">.</span><span class="nx">reporters</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">i18nlint</span><span class="p">.</span><span class="nx">reporters</span><span class="p">);</span>
 <span class="c1">// {</span>
 <span class="c1">//   default: [Function]</span>
 <span class="c1">// }</span>
-<span class="nx">reporter</span><span class="p">(</span><span class="nx">hslint</span><span class="p">(</span><span class="s1">&#39;myfile.html&#39;</span><span class="p">));</span></code></pre></div>
+<span class="nx">reporter</span><span class="p">(</span><span class="nx">i18nlint</span><span class="p">(</span><span class="s1">&#39;myfile.html&#39;</span><span class="p">));</span></code></pre></div>
     </div>
   </div>
 </section>
@@ -462,38 +461,38 @@ test/fixtures/1.html: line 3, column 19, Hardcoded alt attribute
       <h2>CLI</h2>
 
       <h4>Lint a single HTML file</h4>
-      <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>hslint index.html</code></pre></div>
+      <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>i18n-lint index.html</code></pre></div>
       <h4>Lint a single EJS file</h4>
-      <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>hslint -t <span class="s2">&quot;&lt;%,%&gt;&quot;</span> index.ejs
-<span class="nv">$ </span>hslint --template-delimiters <span class="s2">&quot;&lt;%,%&gt;&quot;</span> index.ejs</code></pre></div>
+      <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>i18n-lint -t <span class="s2">&quot;&lt;%,%&gt;&quot;</span> index.ejs
+<span class="nv">$ </span>i18n-lint --template-delimiters <span class="s2">&quot;&lt;%,%&gt;&quot;</span> index.ejs</code></pre></div>
       <h4>Lint multiple files</h4>
-      <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>hslint *.html
-<span class="nv">$ </span>hslint somewhere/**/*.html</code></pre></div>
+      <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>i18n-lint *.html
+<span class="nv">$ </span>i18n-lint somewhere/**/*.html</code></pre></div>
       <h4>Check 'content', 'title' and 'alt' HTML attributes</h4>
-      <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>hslint -a <span class="s2">&quot;content,title,alt&quot;</span> *.html
-<span class="nv">$ </span>hslint --attributes <span class="s2">&quot;content,title,alt&quot;</span> *.html</code></pre></div>
+      <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>i18n-lint -a <span class="s2">&quot;content,title,alt&quot;</span> *.html
+<span class="nv">$ </span>i18n-lint --attributes <span class="s2">&quot;content,title,alt&quot;</span> *.html</code></pre></div>
       <h4>Ignore all 'script', 'style' and 'meta' tags</h4>
-      <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>hslint -i <span class="s2">&quot;script,style,meta&quot;</span> *.html
-<span class="nv">$ </span>hslint --ignore-tags <span class="s2">&quot;script,style,meta&quot;</span> *.html</code></pre></div>
+      <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>i18n-lint -i <span class="s2">&quot;script,style,meta&quot;</span> *.html
+<span class="nv">$ </span>i18n-lint --ignore-tags <span class="s2">&quot;script,style,meta&quot;</span> *.html</code></pre></div>
     </div>
 
     <div class="col-lg-6">
       <h2>API</h2>
 
       <h4>Lint a single HTML file</h4>
-      <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">hslint</span><span class="p">(</span><span class="s1">&#39;myfile.html&#39;</span><span class="p">);</span></code></pre></div>
+      <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">i18nlint</span><span class="p">(</span><span class="s1">&#39;myfile.html&#39;</span><span class="p">);</span></code></pre></div>
       <h4>Lint a single EJS file</h4>
-      <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">hslint</span><span class="p">(</span><span class="s1">&#39;myfile.ejs&#39;</span><span class="p">,</span> <span class="p">{</span>
+      <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">i18nlint</span><span class="p">(</span><span class="s1">&#39;myfile.ejs&#39;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">templateDelimiters</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;&lt;%&#39;</span><span class="p">,</span> <span class="s1">&#39;%&gt;&#39;</span><span class="p">]</span>
 <span class="p">});</span></code></pre></div>
       <h4>Lint multiple files</h4>
-      <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">hslint</span><span class="p">(</span><span class="s1">&#39;somewhere/**/*.html&#39;</span><span class="p">);</span></code></pre></div>
+      <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">i18nlint</span><span class="p">(</span><span class="s1">&#39;somewhere/**/*.html&#39;</span><span class="p">);</span></code></pre></div>
       <h4>Check 'content', 'title' and 'alt' HTML attributes</h4>
-      <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">hslint</span><span class="p">(</span><span class="s1">&#39;myfile.ejs&#39;</span><span class="p">,</span> <span class="p">{</span>
+      <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">i18nlint</span><span class="p">(</span><span class="s1">&#39;myfile.ejs&#39;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">attributes</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;alt&#39;</span><span class="p">]</span>
 <span class="p">});</span></code></pre></div>
       <h4>Ignore all 'script', 'style' and 'meta' tags</h4>
-      <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">hslint</span><span class="p">(</span><span class="s1">&#39;myfile.ejs&#39;</span><span class="p">,</span> <span class="p">{</span>
+      <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">i18nlint</span><span class="p">(</span><span class="s1">&#39;myfile.ejs&#39;</span><span class="p">,</span> <span class="p">{</span>
   <span class="nx">ignoreTags</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;script&#39;</span><span class="p">,</span> <span class="s1">&#39;style&#39;</span><span class="p">,</span> <span class="s1">&#39;meta&#39;</span><span class="p">]</span>
 <span class="p">});</span></code></pre></div>
     </div>
@@ -508,30 +507,30 @@ test/fixtures/1.html: line 3, column 19, Hardcoded alt attribute
     <h1>About</h1>
 
     <h4>
-      <a href="https://github.com/jwarby/hslint">hslint</a> by <a href="https://github.com/jwarby">jwarby</a>
+      <a href="https://github.com/jwarby/i18n-lint">i18n-lint</a> by <a href="https://github.com/jwarby">jwarby</a>
     </h4>
   </div>
 
   <h2>License Information</h2>
-  <p>Licensed under the <a href="https://raw.githubusercontent.com/jwarby/hslint/master/LICENSE.txt">MIT license</a>.</p>
+  <p>Licensed under the <a href="https://raw.githubusercontent.com/jwarby/i18n-lint/master/LICENSE.txt">MIT license</a>.</p>
 
   <h2>Bugs, Support and Feature Requests</h2>
-  <p>Please post a new issue on the <a href="https://github.com/jwarby/hslint/issues">project issue tracker</a>.</p>
+  <p>Please post a new issue on the <a href="https://github.com/jwarby/i18n-lint/issues">project issue tracker</a>.</p>
 
   <h2>Releases</h2>
   <p>To see all releases of the plugin, please visit the
-  <a data-ga-category="gtihub links" data-ga-label="releases" href="https://github.com/jwarby/hslint/releases">releases page on GitHub</a></p>
+  <a data-ga-category="gtihub links" data-ga-label="releases" href="https://github.com/jwarby/i18n-lint/releases">releases page on GitHub</a></p>
 
   <h2>Status</h2>
   <p>
-    <a href="http://semver.org/spec/v2.0.0.html"><img src="https://camo.githubusercontent.com/be43dfc2eecd110cf914d0897ab9d89bffd7c764/68747470733a2f2f62616467652e667572792e696f2f67682f6a776172627925324668736c696e742e737667" alt="GitHub version" data-canonical-src="https://badge.fury.io/gh/jwarby%2Fhslint.svg" style="max-width:100%;"></a>
-    <a href="https://travis-ci.org/jwarby/hslint"><img src="https://camo.githubusercontent.com/24281fdb3d979d4c131c8b7d0712b017daf918b8/68747470733a2f2f7365637572652e7472617669732d63692e6f72672f6a77617262792f68736c696e742e706e673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://secure.travis-ci.org/jwarby/hslint.png?branch=master" style="max-width:100%;"></a>
-    <a href="https://david-dm.org/jwarby/hslint"><img src="https://camo.githubusercontent.com/9efbf57f61e7d2636c9c1a06f830bfac34eaac2d/68747470733a2f2f64617669642d646d2e6f72672f6a77617262792f68736c696e742e7376673f7374796c653d666c6174" alt="Dependency Status" data-canonical-src="https://david-dm.org/jwarby/hslint.svg?style=flat" style="max-width:100%;"></a>
-    <a href="https://david-dm.org/jwarby/hslint#info=devDependencies"><img src="https://camo.githubusercontent.com/cce172a54d4dc1aef54435b7902fd0f485b3d78e/68747470733a2f2f64617669642d646d2e6f72672f6a77617262792f68736c696e742f6465762d7374617475732e7376673f7374796c653d666c6174" alt="devDependency Status" data-canonical-src="https://david-dm.org/jwarby/hslint/dev-status.svg?style=flat" style="max-width:100%;"></a>
+    <a href="http://semver.org/spec/v2.0.0.html"><img src="https://camo.githubusercontent.com/be43dfc2eecd110cf914d0897ab9d89bffd7c764/68747470733a2f2f62616467652e667572792e696f2f67682f6a776172627925324668736c696e742e737667" alt="GitHub version" data-canonical-src="https://badge.fury.io/gh/jwarby%2Fi18n-lint.svg" style="max-width:100%;"></a>
+    <a href="https://travis-ci.org/jwarby/i18n-lint"><img src="https://camo.githubusercontent.com/24281fdb3d979d4c131c8b7d0712b017daf918b8/68747470733a2f2f7365637572652e7472617669732d63692e6f72672f6a77617262792f68736c696e742e706e673f6272616e63683d6d6173746572" alt="Build Status" data-canonical-src="https://secure.travis-ci.org/jwarby/i18n-lint.png?branch=master" style="max-width:100%;"></a>
+    <a href="https://david-dm.org/jwarby/i18n-lint"><img src="https://camo.githubusercontent.com/9efbf57f61e7d2636c9c1a06f830bfac34eaac2d/68747470733a2f2f64617669642d646d2e6f72672f6a77617262792f68736c696e742e7376673f7374796c653d666c6174" alt="Dependency Status" data-canonical-src="https://david-dm.org/jwarby/i18n-lint.svg?style=flat" style="max-width:100%;"></a>
+    <a href="https://david-dm.org/jwarby/i18n-lint#info=devDependencies"><img src="https://camo.githubusercontent.com/cce172a54d4dc1aef54435b7902fd0f485b3d78e/68747470733a2f2f64617669642d646d2e6f72672f6a77617262792f68736c696e742f6465762d7374617475732e7376673f7374796c653d666c6174" alt="devDependency Status" data-canonical-src="https://david-dm.org/jwarby/i18n-lint/dev-status.svg?style=flat" style="max-width:100%;"></a>
     <a href="https://codeclimate.com/repos/5552ffb3e30ba05e900189ff/feed"><img src="https://camo.githubusercontent.com/773a2c889b197fa378854802d1b9ba31b82fa86c/68747470733a2f2f636f6465636c696d6174652e636f6d2f7265706f732f3535353266666233653330626130356539303031383966662f6261646765732f63666463346361656134313238386632633631302f6770612e737667" alt="Code Climate" data-canonical-src="https://codeclimate.com/repos/5552ffb3e30ba05e900189ff/badges/cfdc4caea41288f2c610/gpa.svg" style="max-width:100%;"></a>
     <a href="https://codeclimate.com/repos/5552ffb3e30ba05e900189ff/coverage"><img src="https://camo.githubusercontent.com/2da4deba6ceed81995dae18877c5b08c5cdee5e2/68747470733a2f2f636f6465636c696d6174652e636f6d2f7265706f732f3535353266666233653330626130356539303031383966662f6261646765732f63666463346361656134313238386632633631302f636f7665726167652e737667" alt="Test Coverage" data-canonical-src="https://codeclimate.com/repos/5552ffb3e30ba05e900189ff/badges/cfdc4caea41288f2c610/coverage.svg" style="max-width:100%;"></a>
-    <a href="http://localhost:9000/api/status/jwarby/hslint"><img src="http://localhost:9000/api/status/jwarby/hslint" alt="Untranslated strings which affect i18n" style="max-width:100%;"></a>
-    <a href="https://img.shields.io/github/issues/jwarby/hslint.svg"><img src="https://img.shields.io/github/issues/jwarby/hslint.svg"></a>
+    <a href="http://localhost:9000/api/status/jwarby/i18n-lint"><img src="http://localhost:9000/api/status/jwarby/i18n-lint" alt="Untranslated strings which affect i18n" style="max-width:100%;"></a>
+    <a href="https://img.shields.io/github/issues/jwarby/i18n-lint.svg"><img src="https://img.shields.io/github/issues/jwarby/i18n-lint.svg"></a>
   </p>
 
 </section>

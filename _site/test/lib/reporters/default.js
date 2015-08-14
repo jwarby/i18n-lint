@@ -1,5 +1,5 @@
 /**
- * hslint default reporter tests
+ * i18n-lint default reporter tests
  *
  * @TODO make stdout hooking DRY
  *
@@ -17,7 +17,7 @@ var stripAnsi = require('strip-ansi');
 
 var reporter = require('../../../lib/reporters/default.js').reporter;
 
-describe('hslint reporters default', function() {
+describe('i18n-lint reporters default', function() {
   it('should format the output correctly', function(done) {
     var actual = '';
 

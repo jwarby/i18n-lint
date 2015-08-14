@@ -1,17 +1,17 @@
 {
-  "name": "hslint",
+  "name": "i18n-lint",
   "version": "0.0.0",
   "description": "Lint HTML and template source files for hardcoded (untranslated) strings",
-  "homepage": "https://jwarby.github.io/hslint",
+  "homepage": "https://jwarby.github.io/i18n-lint",
   "private": true,
   "preferGlobal": true,
   "directories": {
     "man": "doc/man"
   },
   "bin": {
-    "hslint": "./bin/hslint"
+    "i18n-lint": "./bin/i18n-lint"
   },
-  "main": "lib/hslint.js",
+  "main": "lib/i18n-lint.js",
   "scripts": {
     "test": "jshint bin/ lib/ test/ && mocha --recursive"
   },
@@ -23,10 +23,10 @@
   "contributors": [],
   "repository": {
     "type": "git",
-    "url": "https://github.com/jwarby/hslint"
+    "url": "https://github.com/jwarby/i18n-lint"
   },
   "license": "MIT",
-  "bugs": "https://github.com/jwarby/hslint/issues",
+  "bugs": "https://github.com/jwarby/i18n-lint/issues",
   "dependencies": {
     "chalk": "^1.0.0",
     "commander": "^2.8.1",
@@ -47,7 +47,7 @@
     "strings",
     "i18n",
     "translation",
-    "hslint",
+    "i18n-lint",
     "lint",
     "untranslated",
     "detect"
