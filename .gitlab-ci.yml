@@ -1,0 +1,6 @@
+before_script:
+  - npm install
+
+tests:
+  script:
+    - npm run-script coverage
