@@ -58,5 +58,11 @@
   ],
   "engines": {
     "node": ">=0.8.0"
+  },
+  "config": {
+    "blanket": {
+      "pattern": [ "" ],
+      "data-cover-never": [ "node_modules", "tests" ]
+    }
   }
 }
