@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "i18n-lint",
+=======
+  "name": "i18n-lint-pages",
+>>>>>>> db833b7a9ed99c2d10646fbcd875271d51d8b11f
   "version": "0.0.0",
   "authors": [
     "James Warwood <james.duncan.1991@googlemail.com>"

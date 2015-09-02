@@ -13,7 +13,7 @@
         {% highlight bash %}
         $ i18n-lint --help
 
-  Usage: i18n-lint [OPTIONS] <file ...>
+Usage: i18n-lint [OPTIONS] <file ...>
 
   Options:
 
@@ -37,7 +37,7 @@
     <div class="col-md-12">
       <h2>API</h2>
       <div class="feature">
-        <p>i18n-lint can be used in other projects as a library.  Install it and then just require it:</p>
+        <p>i18n-lint can be used in other projects as a library.  After installing, simply require the module.</p>
         {% highlight bash %}
         $ npm install --save i18n-lint
         {% endhighlight %}
@@ -52,7 +52,6 @@ var errors = i18nlint('myfile.html', {
 // Lint a string
 var errors = i18nlint.scan('<div>Untranslated String!</div>', {
   // ...options...
-});
 {% endhighlight %}
       </div>
     </div>

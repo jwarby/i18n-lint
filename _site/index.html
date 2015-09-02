@@ -144,7 +144,7 @@
         <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install -g i18n-lint</code></pre></div>
         <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>i18n-lint --help
 
-  Usage: i18n-lint <span class="o">[</span>OPTIONS<span class="o">]</span> &lt;file ...&gt;
+Usage: i18n-lint <span class="o">[</span>OPTIONS<span class="o">]</span> &lt;file ...&gt;
 
   Options:
 
@@ -165,7 +165,7 @@
     <div class="col-md-12">
       <h2>API</h2>
       <div class="feature">
-        <p>i18n-lint can be used in other projects as a library.  Install it and then just require it:</p>
+        <p>i18n-lint can be used in other projects as a library.  After installing, simply require the module.</p>
         <div class="highlight"><pre><code class="language-bash" data-lang="bash"><span class="nv">$ </span>npm install --save i18n-lint</code></pre></div>
         <div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">i18nlint</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;i18n-lint&#39;</span><span class="p">);</span>
 
@@ -176,8 +176,7 @@
 
 <span class="c1">// Lint a string</span>
 <span class="kd">var</span> <span class="nx">errors</span> <span class="o">=</span> <span class="nx">i18nlint</span><span class="p">.</span><span class="nx">scan</span><span class="p">(</span><span class="s1">&#39;&lt;div&gt;Untranslated String!&lt;/div&gt;&#39;</span><span class="p">,</span> <span class="p">{</span>
-  <span class="c1">// ...options...</span>
-<span class="p">});</span></code></pre></div>
+  <span class="c1">// ...options...</span></code></pre></div>
       </div>
     </div>
     <!-- /.col-md-12 -->

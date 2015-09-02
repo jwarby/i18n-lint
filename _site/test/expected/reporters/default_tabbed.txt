@@ -1,4 +1,0 @@
-
-  test/fixtures/tabs.html
-     1 | 				<h1>I'm tabbed out</h1>
-         				    ^ Hardcoded <h1> tag
