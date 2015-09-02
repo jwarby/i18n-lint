@@ -28,7 +28,7 @@ program
   .version(pkg.version)
   .option(
     '-a, --attributes <attributes>',
-    'Comma-separated list of HTML attributes to lint (default: \'alt,title\')',
+    'Comma-separated list of HTML attributes to lint (default: \'alt,title,placeholder\')',
     function(raw) {
       return raw.split(',');
     }

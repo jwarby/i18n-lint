@@ -86,7 +86,7 @@ Similarly, but for EJS-syntax:
 ```
 
 ##### `-a, --attributes <attributes>`
-###### default: `title,alt`
+###### default: `alt,placeholder,title`
 
 A comma-separated list of which HTML attributes should be checked.
 
@@ -194,7 +194,7 @@ when linting EJS files:
 ```
 
 ##### `attributes`
-###### type: `Array`, default: `['title', 'alt']`
+###### type: `Array`, default: `['alt', 'placeholder', 'title']`
 
 Specify which HTML attributes to check when searching for hardcoded strings.
 
