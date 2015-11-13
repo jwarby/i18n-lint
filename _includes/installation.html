@@ -8,7 +8,7 @@
       <div class="feature">
         <p>Installing i18n-lint globally via npm gives you the <code>i18n-lint</code> binary.</p>
         {% highlight bash %}
-        $ npm install -g i18n-lint
+        $ npm install -g jwarby/i18n-lint
         {% endhighlight %}
         {% highlight bash %}
         $ i18n-lint --help
@@ -39,7 +39,7 @@ Usage: i18n-lint [OPTIONS] <file ...>
       <div class="feature">
         <p>i18n-lint can be used in other projects as a library.  After installing, simply require the module.</p>
         {% highlight bash %}
-        $ npm install --save i18n-lint
+        $ npm install --save jwarby/i18n-lint
         {% endhighlight %}
         {% highlight javascript %}
         var i18nlint = require('i18n-lint');
@@ -61,7 +61,7 @@ var errors = i18nlint.scan('<div>Untranslated String!</div>', {
       <div class="feature">
         <p>i18n-lint is also available as a <a href="http://gruntjs.com">grunt</a> plugin: <a href="https://github.com/jwarby/grunt-i18n-lint">grunt-i18nlint</a>.</p>
         {% highlight bash %}
-        $ npm install --save-dev grunt-i18nlint
+        $ npm install --save-dev jwarby/grunt-i18nlint
         {% endhighlight %}
         {% highlight javascript %}
         // Gruntfile.js
