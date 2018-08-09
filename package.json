@@ -33,7 +33,6 @@
     "commander": "^2.0.0",
     "glob": "^5.0.0",
     "htmlparser2": "^3.0.0",
-    "lodash": "^3.0.0",
     "node.extend": "^1.0.0"
   },
   "devDependencies": {
