@@ -12,8 +12,7 @@
       strings for each file which contained them:</p>
       {% highlight javascript %}
 // ~/my_awesome_reporter.js
-module.exports = {
-  reporter: function(errors) {
+module.exports = function(errors) {
     var len = errors.length,
       filename;
 
@@ -21,7 +20,6 @@ module.exports = {
       filename = errors[0].file;
       process.stdout.write(filename + '\n -- ' + len + ' hardcoded string(s)\n');
     }
-  }
 };
       {% endhighlight %}
 
