@@ -37,11 +37,11 @@
   },
   "devDependencies": {
     "chai": "^3.0.0",
-    "coveralls": "^2.0.0",
+    "coveralls": "^3.0.6",
     "hooker": "^0.2.0",
     "istanbul": "^0.3.0",
     "jshint": "^2.0.0",
-    "mocha": "^2.0.0",
+    "mocha": "^6.2.0",
     "mocha-lcov-reporter": "0.0.2",
     "strip-ansi": "^3.0.0"
   },
