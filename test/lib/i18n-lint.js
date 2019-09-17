@@ -19,7 +19,7 @@ var MESSAGES = {
 
 describe('I18nLint lib', function() {
   it('should throw an error if no filename provided', function() {
-    expect(I18nLint).to.throw(TypeError, /path must be/);
+    expect(I18nLint).to.throw(TypeError, "The \"path\" argument must be one of type string, Buffer, or URL. Received type undefined");
   });
 
   it('should return errors in the proper format', function() {

@@ -31,7 +31,7 @@ describe('i18n-lint reporters json', function() {
 
     var expected = fs.readFileSync(
       __dirname + '/../../expected/reporters/json.txt'
-    ).toString();
+    ).toString().replace(/\r/gi,'');;
 
     // Execute method under test
     reporter(errors);
@@ -40,7 +40,7 @@ describe('i18n-lint reporters json', function() {
     expect(actual).to.equal(expected);
 
     // Test that valid json is output
-    expect(JSON.stringify.bind(JSON, actual)).not.to.throw.error;
+    expect(JSON.stringify.bind(JSON, actual)).not.throw();
 
     done();
   });
