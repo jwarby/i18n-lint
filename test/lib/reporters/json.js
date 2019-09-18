@@ -31,7 +31,7 @@ describe('i18n-lint reporters json', function() {
 
     var expected = fs.readFileSync(
       __dirname + '/../../expected/reporters/json.txt'
-    ).toString().replace(/\r/gi,'');;
+    ).toString().replace(/\r/gi,'');
 
     // Execute method under test
     reporter(errors);

@@ -62,7 +62,7 @@ describe('i18n-lint reporters default', function() {
 
     var expected = fs.readFileSync(
       __dirname + '/../../expected/reporters/default_tabbed.txt'
-    ).toString().replace(/\r/gi,'');;
+    ).toString().replace(/\r/gi,'');
 
     // Execute method under test
     reporter(errors);
@@ -87,7 +87,7 @@ describe('i18n-lint reporters default', function() {
 
     var expected = fs.readFileSync(
       __dirname + '/../../expected/reporters/default_new_lines.txt'
-    ).toString().replace(/\r/gi,'');;
+    ).toString().replace(/\r/gi,'');
 
     // Execute method under test
     reporter(errors);
@@ -121,7 +121,7 @@ describe('i18n-lint reporters default', function() {
     var errors = require('../../fixtures/errors/regex_evidence.js');
     var expected = fs.readFileSync(
       __dirname + '/../../expected/reporters/default_string_evidence.txt'
-    ).toString().replace(/\r/gi,'');;
+    ).toString().replace(/\r/gi,'');
     var actual = '';
 
     hooker.hook(process.stdout, 'write', {

@@ -35,7 +35,7 @@ describe('i18n-lint reporters unix', function() {
     });
 
     var expected = fs.readFileSync(__dirname +
-        '/../../expected/reporters/unix.txt').toString().replace(/\r/gi,'');;
+        '/../../expected/reporters/unix.txt').toString().replace(/\r/gi,'');
 
     // Execute
     reporter(errors);
