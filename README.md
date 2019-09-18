@@ -276,7 +276,10 @@ See [CONTRIBUTING.md](https://github.com/jwarby/i18n-lint/blob/master/CONTRIBUTI
 
 `i18n-lint` follows [SemVer](http://semver.org/spec/v2.0.0.html) rules for version numbers.
 
-~~No releases yet~~
+### v1.0.0
+> 18th Sep 2019
+
+First published release.
 
 ## License
 
