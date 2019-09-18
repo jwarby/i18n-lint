@@ -59,5 +59,14 @@ describe('i18n-lint utils', function() {
       expect(utils.appendRegExp(original, after).toString()).to.equal(expected);
     });
   });
+
+  describe('getLast', function() {
+    it('should return last object from an array', function() {
+      expect(utils.getLast(['1','2'])).to.equal('2');
+      expect(utils.getLast([{x: 1},{x: 2}])).to.deep.equal({x: 2});
+      expect(utils.getLast([])).to.equal(undefined);
+      expect(utils.getLast()).to.equal(undefined);
+    });
+  });
 });
 

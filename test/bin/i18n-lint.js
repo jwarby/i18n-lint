@@ -8,6 +8,7 @@
 'use strict';
 
 var assert = require('assert');
+// var expect = require('chai');
 var exec = require('child_process').exec;
 var path = require('path');
 
@@ -202,7 +203,6 @@ describe('i18n-lint bin', function() {
 
       exec(command, function(err, stdout, stderr) {
         assert.equal(err.code, 1);
-
         assert.equal(stdout.match(/Hardcoded/g).length, 8);
         done();
       });
