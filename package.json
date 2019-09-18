@@ -8,6 +8,11 @@
   "directories": {
     "man": "doc/man"
   },
+  "files": [
+    "bin",
+    "lib",
+    "doc"
+  ],
   "bin": {
     "i18n-lint": "./bin/i18n-lint"
   },
