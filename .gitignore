@@ -3,5 +3,3 @@ npm-debug.log
 coverage/
 .coveralls.yml
 /.idea
-yarn.lock
-package-lock.json
