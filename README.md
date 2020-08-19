@@ -142,7 +142,7 @@ To use `i18n-lint` as a library, install it locally and `require` it in your pro
 var I18nLint = require('i18n-lint');
 
 var errors = I18nLint('some_file.ejs', {
-  templateDelimiters: ['<%','%>'],
+  templateDelimiters: [['<%','%>']],
   attributes: ['title', 'alt', 'data-custom-attr']
 });
 ```
@@ -184,12 +184,12 @@ Options are passed as an object, as the second parameter to `i18n-lint`.
 ##### `templateDelimiters`
 ###### type: `Array`, default: `[]`
 
-Specify the start and end template delimiters which the source files use.  For example,
-when linting EJS files:
+Specify the start and end template delimiters which the source files use.  We can specify
+multiple delimiters if needed. For example, when linting EJS files:
 
 ```javascript
   I18nLint('file.ejs', {
-    templateDelimiters: ['<%', '%>']
+    templateDelimiters: [['<%', '%>']]
   });
 ```
 
