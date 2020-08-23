@@ -45,9 +45,11 @@ program
     '-t, --template-delimiters <delimiters>',
     'Template delimiters used in source files.  For example, Mustache-like ' +
         'templating languages should use \'{{,}}\'',
-    function(raw) {
-      return raw.split(',');
-    }
+    function(raw, accu) {
+      accu.push(raw.split(','));
+      return accu;
+    },
+    []
   )
   .option(
     '-r, --reporter <reporter>',

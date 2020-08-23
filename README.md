@@ -142,10 +142,14 @@ To use `i18n-lint` as a library, install it locally and `require` it in your pro
 var I18nLint = require('i18n-lint');
 
 var errors = I18nLint('some_file.ejs', {
-  templateDelimiters: ['<%','%>'],
+  templateDelimiters: [['<%','%>']],
   attributes: ['title', 'alt', 'data-custom-attr']
 });
 ```
+
+> **Note:** prior to v1.1.0, only a single set of template delimiters could
+> be passed. However, the legacy single-depth API is still supported, ie:
+> `templateDelimiters: ['<%', '%>']` will still work (but is not recommended).
 
 If you want to scan a string instead of reading in a file, you can use the `scan` function:
 
@@ -184,12 +188,12 @@ Options are passed as an object, as the second parameter to `i18n-lint`.
 ##### `templateDelimiters`
 ###### type: `Array`, default: `[]`
 
-Specify the start and end template delimiters which the source files use.  For example,
-when linting EJS files:
+Specify the start and end template delimiters which the source files use.  We can specify
+multiple delimiters if needed. For example, when linting EJS files:
 
 ```javascript
   I18nLint('file.ejs', {
-    templateDelimiters: ['<%', '%>']
+    templateDelimiters: [['<%', '%>']]
   });
 ```
 
@@ -275,6 +279,12 @@ See [CONTRIBUTING.md](https://github.com/jwarby/i18n-lint/blob/master/CONTRIBUTI
 ## Release History
 
 `i18n-lint` follows [SemVer](http://semver.org/spec/v2.0.0.html) rules for version numbers.
+
+
+### v1.1.0
+> 23rd Aug 2020
+
+- Support for more than one set of template delimiters add - thanks @alexmorvan
 
 ### v1.0.0
 > 18th Sep 2019
