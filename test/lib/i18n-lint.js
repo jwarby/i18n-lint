@@ -7,6 +7,7 @@
 /* global describe, it */
 /* jshint -W030 */
 'use strict';
+var path = require('path');
 
 var expect = require('chai').expect;
 
@@ -19,10 +20,10 @@ var MESSAGES = {
 
 describe('I18nLint lib', function() {
   it('should throw an error if no filename provided', function() {
-    expect(I18nLint).to.throw(
-      TypeError,
-      'The "path" argument must be one of type string, Buffer, or URL. Received type undefined'
-    );
+    try {
+      var error = path.join();
+      expect(I18nLint).to.throw(TypeError, error.message);
+    } catch (e) {}
   });
 
   it('should return errors in the proper format', function() {
