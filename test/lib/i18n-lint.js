@@ -125,6 +125,14 @@ describe('I18nLint lib', function() {
 
   });
 
+  it('should support legacy single-depth array in `templateDelimiters` option', function() {
+    expect(
+      I18nLint('test/fixtures/testing.ejs', {
+        templateDelimiters: ['<%', '%>']
+      })
+    ).to.have.length(4);
+  });
+
   it('should return empty array for clean file', function() {
     var errors = I18nLint('test/fixtures/clean.hbs', {
       templateDelimiters: [['{{', '}}']]
