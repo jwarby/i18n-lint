@@ -98,14 +98,28 @@ describe('I18nLint lib', function() {
     // Test with EJS-style delimiters, <% and %>
     expect(
       I18nLint('test/fixtures/testing.ejs', {
-        templateDelimiters: ['<%', '%>']
+        templateDelimiters: [['<%', '%>']]
       })
     ).to.have.length(4);
 
     // Test with Mustache-style delimiters, {{ and }}
     expect(
       I18nLint('test/fixtures/testing.hbs', {
-        templateDelimiters: ['{{', '}}']
+        templateDelimiters: [['{{', '}}']]
+      })
+    ).to.have.length(3);
+
+    // Test with multiple delimiters
+    expect(
+      I18nLint('test/fixtures/testing.twig', {
+        templateDelimiters: [['{{', '}}'], ['{%', '%}']]
+      })
+    ).to.have.length(3);
+
+    // Test with a wrong sized delimiter
+    expect(
+      I18nLint('test/fixtures/testing.twig', {
+        templateDelimiters: [['{{'], ['{%', '%}']]
       })
     ).to.have.length(3);
 
@@ -113,7 +127,7 @@ describe('I18nLint lib', function() {
 
   it('should return empty array for clean file', function() {
     var errors = I18nLint('test/fixtures/clean.hbs', {
-      templateDelimiters: ['{{', '}}']
+      templateDelimiters: [['{{', '}}']]
     });
 
     expect(errors).to.be.empty;
@@ -122,7 +136,7 @@ describe('I18nLint lib', function() {
 
   it('should handle text nodes split over multiple lines', function() {
     var errors = I18nLint('test/fixtures/multiline_text_node.hbs', {
-      templateDelimiters: ['{{', '}}']
+      templateDelimiters: [['{{', '}}']]
     });
 
     expect(errors).to.have.length(2);
@@ -141,7 +155,7 @@ describe('I18nLint lib', function() {
 
   it ('should handle a text node with templated content', function() {
     var errors = I18nLint('test/fixtures/text_node_with_template_content.ejs', {
-      templateDelimiters: ['<%', '%>']
+      templateDelimiters: [['<%', '%>']]
     });
 
     expect(errors).to.have.length(1);
@@ -152,7 +166,7 @@ describe('I18nLint lib', function() {
 
   it('should handle attributes with templated content', function() {
     var errors = I18nLint('test/fixtures/attribute_with_template_content.ejs', {
-      templateDelimiters: ['<%', '%>']
+      templateDelimiters: [['<%', '%>']]
     });
 
     expect(errors).to.have.length(1);
@@ -206,7 +220,7 @@ describe('I18nLint lib', function() {
 
   it('should catch hardcoded strings with ... ellipsis', function() {
     var errors = I18nLint('test/fixtures/ellipsis_translation.ejs', {
-      templateDelimiters: ['<%', '%>']
+      templateDelimiters: [['<%', '%>']]
     });
 
     expect(errors).to.have.length(1);

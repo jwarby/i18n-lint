@@ -135,6 +135,23 @@ describe('i18n-lint bin', function() {
     });
   });
 
+  it('-t, --template-delimiters option with multiple delimiters', function(done) {
+    var args = [
+      ' -t "{{,}}" -t "{%,%}" test/fixtures/testing.twig',
+      ' --template-delimiters "{{,}}" --template-delimiters "{%,%}" test/fixtures/testing.twig',
+    ];
+
+    args.forEach(function(arg, i) {
+      exec(cmd + arg, function(err, stdout, stderr) {
+        assert.equal(stdout.match(/Hardcoded <(h1|span|li)> tag/g).length, 3);
+
+        if (i === args.length - 1) {
+          done();
+        }
+      });
+    });
+  });
+
   it('-a, --attributes option should work as expected', function(done) {
     var args = [
       ' -a "title" test/fixtures/multi_instance.html',
