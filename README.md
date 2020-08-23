@@ -147,6 +147,10 @@ var errors = I18nLint('some_file.ejs', {
 });
 ```
 
+> **Note:** prior to v1.1.0, only a single set of template delimiters could
+> be passed. However, the legacy single-depth API is still supported, ie:
+> `templateDelimiters: ['<%', '%>']` will still work (but is not recommended).
+
 If you want to scan a string instead of reading in a file, you can use the `scan` function:
 
 ```javascript
@@ -275,6 +279,12 @@ See [CONTRIBUTING.md](https://github.com/jwarby/i18n-lint/blob/master/CONTRIBUTI
 ## Release History
 
 `i18n-lint` follows [SemVer](http://semver.org/spec/v2.0.0.html) rules for version numbers.
+
+
+### v1.1.0
+> 23rd Aug 2020
+
+- Support for more than one set of template delimiters add - thanks @alexmorvan
 
 ### v1.0.0
 > 18th Sep 2019
