@@ -130,6 +130,24 @@ To maintain colored output, run `i18n-lint` with the `--color` flag:
   $ i18n-lint --color **/*.html | less -R
 ```
 
+### Configuration file
+
+Configuration can be passed in the `.i18n-lint.json` file located in the project root folder (where the package.json is located).
+
+Any options defined in configuration file can be overwritten by the CLI.
+
+The configuration file format:
+
+```json
+{
+  "templateDelimiters": [ ["{", "}"] ],
+  "attributes": [ "alt", "placeholder", "title", "label", "friendly-message" ],
+  "ignoreTags": [ "style", "script", "pre", "code" ],
+  "include": [ "**/lwc/**/*.html", "myfile.html5" ],
+  "exclude": [ "**/aura/**/*.html", "test1.html" ]
+}
+```
+
 ### Library
 
 To use `i18n-lint` as a library, install it locally and `require` it in your projects:

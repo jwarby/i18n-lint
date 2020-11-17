@@ -71,5 +71,7 @@
    */
 
   // Suppress warnings about == null comparisons.
-  "eqnull": true
+  "eqnull": true,
+
+  "mocha": true
 }

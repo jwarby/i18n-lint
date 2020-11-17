@@ -3,10 +3,12 @@
 
 // Core dependencies
 var path = require('path');
+var fs = require('fs');
 
 // npm dependencies
 var glob = require('glob');
 var program  = require('commander');
+var pkgDir = require('pkg-dir');
 
 // Project dependencies
 var I18nLint = require('../');
@@ -19,6 +21,9 @@ var pkg = require('../package.json');
 var reporter;
 var stdin = '';
 var stdinTimeout;
+var toScan = new Set();
+var initializeConfig = false;
+var configFileName = '.i18n-lint.json';
 
 program.on('--help', function() {
   process.stdout.write('  Use `man i18n-lint` for more information\n\n');
@@ -69,6 +74,12 @@ program
   .option(
     '--no-color', 'Disable colored output'
   )
+  .option(
+    '--init', 'Generate configuration file'
+  )
+  .option(
+    '-c, --config <configName>', 'Use this configuration, overriding .i18n-lint.json config options if present', '.i18n-lint.json'
+  )
   .usage('[OPTIONS] <file ...>')
   .parse(process.argv)
 ;
@@ -79,8 +90,78 @@ program.options.forEach(function(option) {
         return match.toUpperCase();
       });
 
-  options[key] = program[key];
+  if (key === 'init' && program[key] == true) {
+    initializeConfig = true;
+  } else if (key === 'config' && program) {
+    configFileName = program[key];
+  } else {
+    options[key] = program[key];
+  }
 });
+
+program.args.forEach(function(arg) {
+  if (arg === '-') {
+    return;
+  }
+  if (options.exclude.some(function(pattern) {
+    return arg.indexOf(pattern) !== -1;
+  })) {
+    return;
+  }
+  toScan.add(arg);
+});
+
+var configFullPath = path.join(pkgDir.sync(), configFileName);
+
+if (initializeConfig) {
+
+  // generate a configuration file
+  if (fs.existsSync(configFullPath)) {
+    process.stderr.write('Configuration file already exists at ' + configFileName + '!\nPlease remove it if you want to generate a new one.\n');
+    process.exit(11);
+  } else {
+
+    // first set default values for parameters that were not provided in the CLI
+    if (!options.attributes) {
+      options.attributes = ['alt', 'placeholder', 'title'];
+    }
+    if (!options.ignoreTags) {
+      options.ignoreTags = ['style', 'script', 'pre', 'code'];
+    }
+    if (!options.templateDelimiters || (Array.isArray(options.templateDelimiters) && !options.templateDelimiters.length)) {
+      options.templateDelimiters = [['{', '}']];
+    }
+    if (!toScan.size) {
+      options.include = [ '**/*.html' ];
+    } else {
+      options.include = Array.from(toScan);
+    }
+    var data = JSON.stringify(options, undefined, 2);
+
+    try {
+      fs.writeFileSync(configFullPath, data);
+    } catch (ex) {
+      process.stderr.write('Error creating configuration file at ' + configFileName + '!\n' + ex + '\n');
+      process.exit(12);
+    }
+    process.stdout.write('Configuration data is saved to ' + configFullPath + '\n');
+    process.exit(0);
+  }
+} else {
+
+  // read configuration form the file (if exists), add any unset options (don't overwrite options specified in CLI)
+  if (fs.existsSync(configFullPath)) {
+    process.stdout.write('Reading configuration from ' + configFullPath + '\n');
+    var rawData = fs.readFileSync(configFullPath);
+    var jsonData = JSON.parse(rawData);  
+    Object.keys(jsonData).forEach(function(key) {
+        var value = jsonData[key];
+        if (!options[key] || (Array.isArray(options[key]) && !options[key].length)) {
+          options[key] = value;
+        }
+    });
+  }
+}
 
 if (options.reporter) {
 
@@ -136,34 +217,22 @@ if (!program.args.length || program.args[0] === '-') {
   });
 
   if (!program.args.length) {
-    return (stdinTimeout = setTimeout(function() {
-      process.stdout.write('No files specified. See \'i18n-lint --help\':\n');
-      program.outputHelp();
-      process.exit(64);
-    }, 10));
+    if (options.include) {
+      options.include.forEach(function(option) { toScan.add(option); });
+    } else {
+      return (stdinTimeout = setTimeout(function() {
+        process.stdout.write('No files specified. See \'i18n-lint --help\':\n');
+        program.outputHelp();
+        process.exit(64);
+      }, 10));
+    }
   }
 }
 
-program.args.forEach(function(src) {
-  if (src === '-') {
-    return;
-  }
-
-  if (options.exclude.some(function(pattern) {
-    return src.indexOf(pattern) !== -1;
-  })) {
-    return;
-  }
-
-  glob(src, {
-    ignore: options.exclude
-  }, function(err, files) {
-
-    if (err) {
-      process.stderr.write(err);
-      process.exit(70);
-    }
-
+try {
+  toScan.forEach(function(src) {    
+    var files = glob.sync(src, {ignore: options.exclude});    
+    
     if (!files.length) {
       process.stderr.write('i18n-lint: ' + src + ': No such file or directory\n');
       process.exit(66);
@@ -195,10 +264,9 @@ program.args.forEach(function(src) {
         }
       }
     });
-
     completed++;
 
-    if (completed === program.args.length) {
+    if (completed === toScan.size) {
       if (failed) {
         return process.exit(1);
       }
@@ -206,4 +274,7 @@ program.args.forEach(function(src) {
       process.exit(0);
     }
   });
-});
+} catch (ex) {
+  process.stderr.write(ex);
+  process.exit(70);
+}

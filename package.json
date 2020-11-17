@@ -1,6 +1,6 @@
 {
   "name": "i18n-lint",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Lint HTML and template source files for hardcoded (untranslated) strings",
   "homepage": "https://jwarby.github.io/i18n-lint",
   "preferGlobal": true,
@@ -13,11 +13,12 @@
     "doc"
   ],
   "bin": {
-    "i18n-lint": "./bin/i18n-lint"
+    "i18n-lint": "bin/i18n-lint"
   },
   "main": "lib/i18n-lint.js",
   "scripts": {
-    "test": "./node_modules/.bin/jshint bin/ lib/ test/ && ./node_modules/.bin/mocha --recursive",
+    "test": "./node_modules/.bin/mocha --recursive",
+    "lint": "./node_modules/.bin/jshint bin/ lib/ test/",
     "coverage": "./node_modules/.bin/nyc _mocha -- -R spec --recursive"
   },
   "author": {
@@ -25,7 +26,11 @@
     "email": "james.duncan.1991@googlemail.com",
     "url": "https://github.com/jwarby"
   },
-  "contributors": [],
+  "contributors": [{
+    "name" : "Andrew Poblocki",
+    "email" : "apoblocki@salesforce.com",
+    "url" : "https://github.com/apoblock"
+  }],
   "repository": {
     "type": "git",
     "url": "https://github.com/jwarby/i18n-lint"
@@ -37,16 +42,17 @@
     "commander": "^2.0.0",
     "glob": "^5.0.0",
     "htmlparser2": "^3.0.0",
-    "node.extend": "^1.0.0"
+    "node.extend": "^1.0.0",
+    "pkg-dir": "^3.0.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "coveralls": "^3.0.6",
     "hooker": "^0.2.3",
-    "nyc": "^14.1.1",
     "jshint": "^2.0.0",
     "mocha": "^6.2.0",
     "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^14.1.1",
     "strip-ansi": "^5.2.0"
   },
   "keywords": [
