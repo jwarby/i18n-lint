@@ -26,11 +26,13 @@
     "email": "james.duncan.1991@googlemail.com",
     "url": "https://github.com/jwarby"
   },
-  "contributors": [{
-    "name" : "Andrew Poblocki",
-    "email" : "apoblocki@salesforce.com",
-    "url" : "https://github.com/apoblock"
-  }],
+  "contributors": [
+    {
+      "name": "Andrew Poblocki",
+      "email": "apoblocki@salesforce.com",
+      "url": "https://github.com/apoblock"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/jwarby/i18n-lint"
@@ -41,7 +43,7 @@
     "chalk": "^1.0.0",
     "commander": "^2.0.0",
     "glob": "^5.0.0",
-    "htmlparser2": "^3.0.0",
+    "htmlparser2": "^5.0.0",
     "node.extend": "^1.0.0",
     "pkg-dir": "^3.0.0"
   },
