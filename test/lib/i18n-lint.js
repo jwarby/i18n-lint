@@ -483,5 +483,15 @@ describe('I18nLint lib', function() {
 
     expect(errors).to.have.length(1);
   });
+
+  it('should handle attributes that are not enclosed', function() {
+    var errors = I18nLint('test/fixtures/lwc.html', 
+        { attributes: ['alt', 'placeholder', 'title', 'label', 'alternative-text', 'text'],
+          templateDelimiters: [['{','}']],
+          ignoreTags: ['style', 'script', 'pre', 'code']
+      });
+
+    expect(errors).to.have.length(0);
+  });  
 });
 
