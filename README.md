@@ -114,12 +114,26 @@ A comma-separated list of file patterns to exclude, such as `'docs/,ignored.html
 
 Maintain/turn off colored output.  For more info, see <https://www.npmjs.com/package/chalk#chalk-supportscolor>.
 
+##### `--config`
+
+##### default: `.i18n-lint.json`
+
+Configuration file name. Options specified in optional configuration file will be used if not specified in the command line (CLI has a priority).
+
+##### `--init`
+
+Generate configuration file. This will generate a configuration file with a default name of `.i18n-lint.json` or the one specified in `--config`. Options specified in the command line will be saved in the file.
+
+**Note:** Tool will quit after saving the configuration file, linting will not be performed when `--init` option is specified.
+
 #### Exit Status
 
 - `0`: if everything went OK, and no hardcoded strings were found
 - `1`: if hardcoded strings were found
 - `64`: command-line usage error, e.g. no input files provided (`[EX_USAGE]`)
 - `66`: cannot open input, e.g. input files I/O error, specified reporter file does not exist (`[EX_NOINPUT]`)
+- `51`: trying to save configuration (with `--init` option) to an existing file
+- `52`: error when generating configuration file (with `--init` option)
 - `70`: internal software error (`[EX_SOFTWARE]`)
 
 #### Colored Output
@@ -132,9 +146,11 @@ To maintain colored output, run `i18n-lint` with the `--color` flag:
 
 ### Configuration file
 
-Configuration can be passed in the `.i18n-lint.json` file located in the project root folder (where the package.json is located).
+Options can be defined in a configuration file.
 
-Any options defined in configuration file can be overwritten by the CLI.
+The default name of the configuration file is `.i18n-lint.json` located in the project root folder (where the package.json is located). The name can be overridden using `--config` command line parameter.
+
+The configuration file can be initialized using the `--init` command line parameter.
 
 The configuration file format:
 
@@ -143,10 +159,12 @@ The configuration file format:
   "templateDelimiters": [ ["{", "}"] ],
   "attributes": [ "alt", "placeholder", "title", "label", "friendly-message" ],
   "ignoreTags": [ "style", "script", "pre", "code" ],
-  "include": [ "**/lwc/**/*.html", "myfile.html5" ],
-  "exclude": [ "**/aura/**/*.html", "test1.html" ]
+  "include": [ "**/mycomponents/**/*.html", "myfile.html5" ],
+  "exclude": [ "**/__mytests__/**/*.html", "test1.html" ]
 }
 ```
+
+**Note:** Options specified in command line will overwrite settings read from configuration file.
 
 ### Library
 

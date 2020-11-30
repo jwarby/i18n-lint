@@ -118,7 +118,7 @@ if (initializeConfig) {
   // generate a configuration file
   if (fs.existsSync(configFullPath)) {
     process.stderr.write('Configuration file already exists at ' + configFileName + '!\nPlease remove it if you want to generate a new one.\n');
-    process.exit(11);
+    process.exit(51);
   } else {
 
     // first set default values for parameters that were not provided in the CLI
@@ -142,7 +142,7 @@ if (initializeConfig) {
       fs.writeFileSync(configFullPath, data);
     } catch (ex) {
       process.stderr.write('Error creating configuration file at ' + configFileName + '!\n' + ex + '\n');
-      process.exit(12);
+      process.exit(52);
     }
     process.stdout.write('Configuration data is saved to ' + configFullPath + '\n');
     process.exit(0);
