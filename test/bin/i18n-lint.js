@@ -8,7 +8,6 @@
 'use strict';
 
 var assert = require('assert');
-// var expect = require('chai');
 var exec = require('child_process').exec;
 var path = require('path');
 
@@ -92,7 +91,7 @@ describe('i18n-lint bin', function() {
     exec(
       cmd + ' --reporter test/fixtures/sample-reporter.js test/fixtures/1.html',
       function(err, stdout, stderr) {
-        assert.equal(stdout, 'Found 3 errors\n');
+        assert.strictEqual(true, stdout.endsWith('Found 3 errors\n'));
 
         done();
       }
