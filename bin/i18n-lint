@@ -190,8 +190,8 @@ program.args.forEach(function(src) {
           process.stderr.write('i18n-lint: ' + file + ': is a directory\n');
           process.exit(64);
         } else {
-          process.stderr.write(e);
-          process.exit(70);
+          // process.stderr.write(e);
+          // process.exit(70);
         }
       }
     });
