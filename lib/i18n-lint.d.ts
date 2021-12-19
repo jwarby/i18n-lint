@@ -24,6 +24,8 @@ declare module 'i18n-lint' {
     character: number;
     /** where the error was found */
     scope: string;
+    /** Whether the error is continued in multiple lines */
+    continued: boolean
   };
   export type Reporter = (errors: Error[]) => void;
   /**
